@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private LevelInitData data;
+    public readonly SatietyUpdateEvent SatietyChanged = new SatietyUpdateEvent();
+    private int _minSatiety;
+    private int _maxSatiety;
     private int _satiety;
     private int _costOfMove;
 
     private void Start()
     {
+        _minSatiety = data.minSatiety;
+        _maxSatiety = data.maxSatiety;
         _satiety = data.startSatiety;
         _costOfMove = data.costOfMove;
     }
@@ -18,7 +24,7 @@ public class Player : MonoBehaviour
         {
             Move(cell.position);
             Eat(cell);
-            Debug.Log(_satiety);
+            Debug.Log("Current satiety: " + _satiety);
         }
 
         if (NotPossibleToMove())
@@ -39,18 +45,27 @@ public class Player : MonoBehaviour
 
     private void Eat(Cell cell)
     {
-        _satiety += cell.GetFood();
+        ChangeSatiety(+cell.GetFood());
         cell.ClearFood();
     }
 
-    public void Move(Vector2 position)
+    private void Move(Vector2 position)
     {
-        _satiety -= _costOfMove;
+        ChangeSatiety(-_costOfMove);
         transform.position = position;
     }
 
-    public void CantMove()
+    private void CantMove()
     {
         Debug.Log("Can't move");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void ChangeSatiety(int delta)
+    {
+        _satiety += delta;
+        _satiety = _satiety < 0 ? _minSatiety : _satiety;
+        _satiety = _satiety > _maxSatiety ? _maxSatiety : _satiety;
+        SatietyChanged.Invoke(_satiety * 1.0f / _maxSatiety);
     }
 }

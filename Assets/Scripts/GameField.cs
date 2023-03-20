@@ -41,6 +41,8 @@ public class GameField : MonoBehaviour
     {
         var cell = Instantiate(prefab, new Vector3(position.x, position.y, 0),
             Quaternion.identity);
+        cell.SetActive(false);
+        cell.SetActive(true);
         var cellComponent = cell.GetComponent<Cell>();
         
         _cells[position.x, position.y] = cellComponent;
