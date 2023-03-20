@@ -16,6 +16,6 @@ MonoBehaviour:
   cellPrefab: {fileID: 1294649923255717107, guid: a34e2c9da26535c4ba63abeea028f6c8, type: 3}
   playerSpawnPoint: {x: 2, y: 1}
   minSatiety: 0
-  maxSatiety: 0
+  maxSatiety: 50
   startSatiety: 4
   costOfMove: 4
