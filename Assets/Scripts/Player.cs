@@ -2,7 +2,15 @@
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private PlayerData data;
+    [SerializeField] private LevelInitData data;
+    private int _satiety;
+    private int _costOfMove;
+
+    private void Start()
+    {
+        _satiety = data.startSatiety;
+        _costOfMove = data.costOfMove;
+    }
 
     public void MoveTo(Cell cell)
     {
@@ -10,7 +18,7 @@ public class Player : MonoBehaviour
         {
             Move(cell.position);
             Eat(cell);
-            Debug.Log(data.satiety);
+            Debug.Log(_satiety);
         }
 
         if (NotPossibleToMove())
@@ -21,7 +29,7 @@ public class Player : MonoBehaviour
 
     private bool PossibleToMove()
     {
-        return data.satiety - data.costOfMove >= 0;
+        return _satiety - _costOfMove >= 0;
     }
     
     private bool NotPossibleToMove()
@@ -31,13 +39,13 @@ public class Player : MonoBehaviour
 
     private void Eat(Cell cell)
     {
-        data.satiety += cell.GetFood();
+        _satiety += cell.GetFood();
         cell.ClearFood();
     }
 
     public void Move(Vector2 position)
     {
-        data.satiety -= data.costOfMove;
+        _satiety -= _costOfMove;
         transform.position = position;
     }
 

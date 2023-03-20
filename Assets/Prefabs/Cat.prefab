@@ -125,8 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b3268b7854400590b16107ce3923b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: -7541660061996319055}
-  gameField: {fileID: 0}
 --- !u!114 &-7541660061996319055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,4 +137,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74328456ba44384a6e4ff8162f3884c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: d55a5cdb1e35d7c4b9e5a7eb93ea59fc, type: 2}
+  data: {fileID: 11400000, guid: f1f6ac8d0f1c6834cbf461ca762ed4a8, type: 2}
