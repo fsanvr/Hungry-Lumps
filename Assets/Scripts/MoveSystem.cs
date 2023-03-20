@@ -27,7 +27,7 @@ public class MoveSystem : MonoBehaviour
                 var cell = clicked.GetComponent<Cell>();
                 if (_gameField.IsNeighbour(_player.transform.position, cell))
                 {
-                    MovePlayerTo(cell.position);
+                    MovePlayerTo(cell);
                 }
             }
         }
@@ -55,8 +55,8 @@ public class MoveSystem : MonoBehaviour
         return go.GetComponent<Cell>() != null;
     }
 
-    private void MovePlayerTo(Vector2 position)
+    private void MovePlayerTo(Cell cell)
     {
-        _player.MoveTo(position);
+        _player.MoveTo(cell);
     }
 }
