@@ -5,9 +5,10 @@ public class SatietyView : MonoBehaviour
 {
     [SerializeField] private Transform progressBar;
     private bool _subscribed;
-    private void Update()
+    private void Start()
     {
-        TrySubscribe();
+        var player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        Subscribe(player.SatietyChanged);
     }
 
     public void Subscribe(UnityEvent<float> @event)

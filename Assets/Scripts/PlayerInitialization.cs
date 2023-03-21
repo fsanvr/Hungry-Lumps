@@ -8,6 +8,7 @@ public class PlayerInitialization : MonoBehaviour
     private void Start()
     {
         var playerSpawnPoint = new Vector3(levelInitData.playerSpawnPoint.x, levelInitData.playerSpawnPoint.y, 0);
-        var player = Instantiate(configuration.currentPlayerPrefab, playerSpawnPoint, Quaternion.identity);
+        var player = GameObject.FindWithTag("Player");
+        player.transform.position = playerSpawnPoint;
     }
 }
