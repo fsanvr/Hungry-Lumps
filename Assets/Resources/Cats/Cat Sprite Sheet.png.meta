@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: c63ba3bbffe37d3499d66d1c9fb1229f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cat Sprite Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb827648d23186545bfe2f2e1a074325
+      internalID: -2076074925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Cat Sprite Sheet_28: 727378001
+      Cat Sprite Sheet_9: 465919137
+      Cat Sprite Sheet_15: 93474000
+      Cat Sprite Sheet_7: -611579969
+      Cat Sprite Sheet_41: -592646449
+      Cat Sprite Sheet_50: -1253183188
+      Cat Sprite Sheet_49: 885149294
+      Cat Sprite Sheet_55: 1284625451
+      Cat Sprite Sheet_23: -368771642
+      Cat Sprite Sheet_26: -286593139
+      Cat Sprite Sheet_29: 123185937
+      Cat Sprite Sheet_36: 1010797124
+      Cat Sprite Sheet_40: 1299466753
+      Cat Sprite Sheet_17: -2016631486
+      Cat Sprite Sheet_38: -1105294241
+      Cat Sprite Sheet_18: -1794371356
+      Cat Sprite Sheet_39: 1596067111
+      Cat Sprite Sheet_44: -1275783597
+      Cat Sprite Sheet_52: -25568576
+      Cat Sprite Sheet_5: 636478794
+      Cat Sprite Sheet_30: -1962074151
+      Cat Sprite Sheet_20: 1340503021
+      Cat Sprite Sheet_47: 1057692690
+      Cat Sprite Sheet_35: -1598396016
+      Cat Sprite Sheet_54: 791799219
+      Cat Sprite Sheet_12: 848664758
+      Cat Sprite Sheet_3: 2029521628
+      Cat Sprite Sheet_11: -170608102
+      Cat Sprite Sheet_19: 669432569
+      Cat Sprite Sheet_27: -102887255
+      Cat Sprite Sheet_51: 1043804491
+      Cat Sprite Sheet_1: -1380927178
+      Cat Sprite Sheet_8: -524581958
+      Cat Sprite Sheet_37: 1766088005
+      Cat Sprite Sheet_14: -2016173929
+      Cat Sprite Sheet_2: -613478070
+      Cat Sprite Sheet_10: 1176832838
+      Cat Sprite Sheet_13: 1151689217
+      Cat Sprite Sheet_31: 1023217285
+      Cat Sprite Sheet_34: 2102910668
+      Cat Sprite Sheet_48: -767928334
+      Cat Sprite Sheet_32: -135467321
+      Cat Sprite Sheet_56: -1063761228
+      Cat Sprite Sheet_4: 450913177
+      Cat Sprite Sheet_42: -580517548
+      Cat Sprite Sheet_22: 1047240639
+      Cat Sprite Sheet_45: 1904828299
+      Cat Sprite Sheet_24: 167137561
+      Cat Sprite Sheet_21: 2145949351
+      Cat Sprite Sheet_0: -2076074925
+      Cat Sprite Sheet_53: -234585367
+      Cat Sprite Sheet_43: 1686652287
+      Cat Sprite Sheet_6: 249536960
+      Cat Sprite Sheet_25: -1828417754
+      Cat Sprite Sheet_16: 342696201
+      Cat Sprite Sheet_33: -1207864791
+      Cat Sprite Sheet_46: -937270951
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
