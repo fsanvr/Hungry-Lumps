@@ -1,53 +1,34 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MoveSystem : MonoBehaviour
 {
+    [SerializeField] private InputSystem input;
     private GameField _gameField;
     private Player _player;
 
     private void Start()
     {
+        input.MouseClicked.AddListener(OnMouseClicked);
         _gameField = GameObject.Find("GameField").GetComponent<GameField>();
         _player = this.GetComponent<Player>();
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        ProcessMove();
+        input.MouseClicked.RemoveListener(OnMouseClicked);
     }
 
-    private void ProcessMove()
+    private void OnMouseClicked(Collider2D clicked)
     {
-        if (IsMouseInput())
+        if (IsCell(clicked.gameObject))
         {
-            var screenPosition = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-            var clicked = GetClickedObject(screenPosition);
-            if (clicked && IsCell(clicked))
+            var cell = clicked.GetComponent<Cell>();
+            if (_gameField.IsNeighbour(_player.transform.position, cell))
             {
-                var cell = clicked.GetComponent<Cell>();
-                if (_gameField.IsNeighbour(_player.transform.position, cell))
-                {
-                    MovePlayerTo(cell);
-                }
+                MovePlayerTo(cell);
             }
         }
-    }
-
-    private bool IsMouseInput()
-    {
-        return Input.GetMouseButtonDown(0);
-    }
-
-    private GameObject GetClickedObject(Vector2 clickPosition)
-    {
-        var direction = Vector2.zero;
-        var hit = Physics2D.Raycast(clickPosition, direction);
-        if (hit)
-        {
-            return hit.collider.gameObject;
-        }
-
-        return null;
     }
 
     private bool IsCell(GameObject go)
