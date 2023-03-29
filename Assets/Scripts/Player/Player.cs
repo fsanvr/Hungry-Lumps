@@ -24,7 +24,6 @@ public class Player : MonoBehaviour
         {
             Move(cell.position);
             Eat(cell);
-            Debug.Log("Current satiety: " + _satiety);
             if (cell.isFinish)
             {
                 FinishLevel();
@@ -61,7 +60,7 @@ public class Player : MonoBehaviour
 
     private void CantMove()
     {
-        Debug.Log("Can't move");
+        Debug.Log("Lose(");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
