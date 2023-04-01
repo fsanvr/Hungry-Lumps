@@ -1,27 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 public class SatietyView : MonoBehaviour
 {
     [SerializeField] private Transform progressBar;
-    private void Start()
+    private float _incrementRemainder;
+    [SerializeField] private float incrementRate = 0.24f;
+    private void Awake()
     {
-        var player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        Subscribe(player.SatietyChanged);
-    }
-
-    public void Subscribe(UnityEvent<float> @event)
-    {
-        @event.AddListener(SetValue);
-    }
-
-    public void Unsubscribe(UnityEvent<float> @event)
-    {
-        @event.RemoveListener(SetValue);
-    }
-    private void SetValue(float normalizedValue)
-    {
-        progressBar.localScale = new Vector3(normalizedValue, 1.0f, 1.0f);
+        var player = GameObject.FindWithTag("Player");
+        if (player)
+        {
+            player.GetComponent<Player>().SatietyChanged.AddListener(AccumulateChanges);
+        }
     }
 
     private void OnDestroy()
@@ -29,8 +19,40 @@ public class SatietyView : MonoBehaviour
         var player = GameObject.FindWithTag("Player");
         if (player)
         {
-            var playerComponent = player.GetComponent<Player>();
-            Unsubscribe(playerComponent.SatietyChanged);
+            player.GetComponent<Player>().SatietyChanged.RemoveListener(AccumulateChanges);
         }
+    }
+    
+    private void AccumulateChanges(float normalizedValue)
+    {
+        Debug.Log(normalizedValue);
+        _incrementRemainder += normalizedValue - progressBar.localScale.x;
+    }
+
+    private void Update()
+    {
+        ProcessIncrement();
+    }
+
+    private void ProcessIncrement()
+    {
+        if (Mathf.Abs(_incrementRemainder) == 0.0f)
+        {
+            return;
+        }
+        
+        var currentScale = progressBar.localScale;
+        var newScale = new Vector3(currentScale.x + GetIncrement(), currentScale.y, currentScale.z);
+        progressBar.localScale = newScale;
+
+        _incrementRemainder -= GetIncrement();
+    }
+
+    private float GetIncrement()
+    {
+        return Mathf.Min(
+            Mathf.Abs(incrementRate) * Time.deltaTime, 
+            Mathf.Abs(_incrementRemainder))
+            * Mathf.Sign(_incrementRemainder);
     }
 }

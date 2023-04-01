@@ -16,6 +16,13 @@ public class Player : MonoBehaviour
         _maxSatiety = map.MaxSatiety;
         _satiety = map.StartSatiety;
         _costOfMove = map.CostOfMove;
+        
+        SatietyChanged.Invoke(NormalizedSatiety());
+    }
+
+    private float NormalizedSatiety()
+    {
+        return _satiety * 1.0f / _maxSatiety;
     }
 
     public void MoveTo(Cell cell)
@@ -24,6 +31,7 @@ public class Player : MonoBehaviour
         {
             Move(cell.position);
             Eat(cell);
+            Changed();
             if (cell.isFinish)
             {
                 FinishLevel();
@@ -69,7 +77,11 @@ public class Player : MonoBehaviour
         _satiety += delta;
         _satiety = _satiety < _minSatiety ? _minSatiety : _satiety;
         _satiety = _satiety > _maxSatiety ? _maxSatiety : _satiety;
-        SatietyChanged.Invoke(_satiety * 1.0f / _maxSatiety);
+    }
+
+    private void Changed()
+    {
+        SatietyChanged.Invoke(NormalizedSatiety());
     }
 
     private void FinishLevel()
