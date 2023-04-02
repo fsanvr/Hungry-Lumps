@@ -28,5 +28,5 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 2d996a9f7524c354585e081fdf1c9ada, type: 3}
     nickname: Coconut Doggy
     purchasePrice: 770
-    status: 0
+    status: 2
   activeIndex: 0

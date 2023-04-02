@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Transform = UnityEngine.Transform;
 
 public class ShopView : MonoBehaviour
 {
     [SerializeField] private string shopSystemName = "ShopSystem";
     [SerializeField] private GameObject contentView;
-    [SerializeField] private GameObject itemPrefab;
+    [SerializeField] private GameObject prefabActive;
+    [SerializeField] private GameObject prefabNotPurchased;
+    [SerializeField] private GameObject prefabPurchased;
+    [SerializeField] private GameObject prefabUnavailable;
 
     private void Awake()
     {
@@ -31,7 +35,8 @@ public class ShopView : MonoBehaviour
         ClearView();
         foreach (var item in data.items)
         {
-            var itemGO = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
+            var prefab = SelectPrefab(data, item);
+            var itemGO = Instantiate(prefab, Vector3.zero, Quaternion.identity);
             ConfigureItem(itemGO, item);
             itemGO.transform.SetParent(contentView.transform);
         }
@@ -39,12 +44,41 @@ public class ShopView : MonoBehaviour
 
     private static void ConfigureItem(GameObject go, ShopItem data)
     {
-        var spriteComponent = go.transform.GetChild(0).GetComponent<Image>();
-        var nameComponent = go.transform.GetChild(1).GetComponent<Text>();
-        var priceComponent = go.transform.GetChild(2).GetComponent<Text>();
-        spriteComponent.sprite = data.sprite;
-        nameComponent.text = data.nickname;
-        priceComponent.text = data.purchasePrice.ToString();
+        foreach (Transform child in go.transform)
+        {
+            if (child.name == "Sprite")
+            {
+                var spriteComponent = child.GetComponent<Image>();
+                spriteComponent.sprite = data.sprite;
+            }
+
+            if (child.name == "Name")
+            {
+                var nameComponent = child.GetComponent<Text>();
+                nameComponent.text = data.nickname;
+            }
+
+            if (child.name == "Cost")
+            {
+                var priceComponent = child.GetComponent<Text>();
+                priceComponent.text = data.purchasePrice.ToString();
+            }
+        }
+    }
+
+    private GameObject SelectPrefab(ShopData data, ShopItem item)
+    {
+        if (item.Equals(data.items[data.activeIndex]))
+        {
+            return prefabActive;
+        }
+
+        return item.status switch
+        {
+            ShopItemStatus.Unavailable => prefabUnavailable,
+            ShopItemStatus.Purchased => prefabPurchased,
+            _ => prefabNotPurchased
+        };
     }
 
     private void ClearView()

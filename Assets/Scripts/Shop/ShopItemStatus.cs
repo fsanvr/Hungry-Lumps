@@ -2,5 +2,5 @@
 {
     NotPurchased,
     Purchased,
-    Inaccessible
+    Unavailable
 }

@@ -736,7 +736,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopSystemName: ShopSystem
   contentView: {fileID: 28996197}
-  itemPrefab: {fileID: 3162404523123999522, guid: ffdd3549401372a4c91ae64712586931, type: 3}
+  prefabActive: {fileID: 3162404523123999522, guid: b09befdf4935f864eb348d19559cdb50, type: 3}
+  prefabNotPurchased: {fileID: 3162404523123999522, guid: ffdd3549401372a4c91ae64712586931, type: 3}
+  prefabPurchased: {fileID: 3162404523123999522, guid: 438052a77960b834a8be2f100d7f72e7, type: 3}
+  prefabUnavailable: {fileID: 3162404523123999522, guid: deb5104683833924bbc3adac96ee4756, type: 3}
 --- !u!1 &1112099566 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9094928840686270699, guid: d465072900e4f984fa036a1a460c91ad, type: 3}
