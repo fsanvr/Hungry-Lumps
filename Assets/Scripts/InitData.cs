@@ -9,7 +9,7 @@ public static class InitData
 
     static InitData()
     {
-        _cellPrefab = Resources.Load<GameObject>("Cell");
+        _cellPrefab = Resources.Load<GameObject>("Prefabs/Cell");
         var foodSprite = Resources.Load<Sprite>("Food/Apple");
 
         _maps = new FoodMap[_shape];
