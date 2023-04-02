@@ -41,6 +41,21 @@ public class ShopView : MonoBehaviour
             itemGO.transform.SetParent(contentView.transform);
         }
     }
+    
+    private GameObject SelectPrefab(ShopData data, ShopItem item)
+    {
+        if (item.Equals(data.items[data.activeIndex]))
+        {
+            return prefabActive;
+        }
+
+        return item.status switch
+        {
+            ShopItemStatus.Unavailable => prefabUnavailable,
+            ShopItemStatus.Purchased => prefabPurchased,
+            _ => prefabNotPurchased
+        };
+    }
 
     private static void ConfigureItem(GameObject go, ShopItem data)
     {
@@ -65,22 +80,7 @@ public class ShopView : MonoBehaviour
             }
         }
     }
-
-    private GameObject SelectPrefab(ShopData data, ShopItem item)
-    {
-        if (item.Equals(data.items[data.activeIndex]))
-        {
-            return prefabActive;
-        }
-
-        return item.status switch
-        {
-            ShopItemStatus.Unavailable => prefabUnavailable,
-            ShopItemStatus.Purchased => prefabPurchased,
-            _ => prefabNotPurchased
-        };
-    }
-
+    
     private void ClearView()
     {
         foreach (Transform item in contentView.transform)
