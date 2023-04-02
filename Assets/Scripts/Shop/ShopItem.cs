@@ -2,7 +2,8 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct ShopItem : IEquatable<ShopItem>
+[CreateAssetMenu]
+public class ShopItem: ScriptableObject, IEquatable<ShopItem>
 {
     public Sprite sprite;
     public string nickname;
@@ -10,7 +11,7 @@ public struct ShopItem : IEquatable<ShopItem>
     public ShopItemStatus status;
     public bool Equals(ShopItem other)
     {
-        return sprite == other.sprite && nickname == other.nickname && status == other.status
+        return sprite == other.sprite && nickname == other.nickname && status == other.status 
                && purchasePrice == other.purchasePrice;
     }
 }

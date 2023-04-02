@@ -16,7 +16,7 @@ public class ShopView : MonoBehaviour
         var shop = GameObject.Find(shopSystemName).GetComponent<ShopSystem>();
         if (shop)
         {
-            shop.GetComponent<ShopSystem>().shopChanged.AddListener(Show);
+            shop.GetComponent<ShopSystem>().ShopChanged.AddListener(Show);
         }
     }
 
@@ -26,7 +26,7 @@ public class ShopView : MonoBehaviour
         var shop = GameObject.Find(shopSystemName);
         if (shop)
         {
-            shop.GetComponent<ShopSystem>().shopChanged.RemoveListener(Show);
+            shop.GetComponent<ShopSystem>().ShopChanged.RemoveListener(Show);
         }
     }
 
@@ -35,22 +35,18 @@ public class ShopView : MonoBehaviour
         ClearView();
         foreach (var item in data.items)
         {
-            var prefab = SelectPrefab(data, item);
+            var prefab = SelectPrefab(item);
             var itemGO = Instantiate(prefab, Vector3.zero, Quaternion.identity);
             ConfigureItem(itemGO, item);
             itemGO.transform.SetParent(contentView.transform);
         }
     }
     
-    private GameObject SelectPrefab(ShopData data, ShopItem item)
+    private GameObject SelectPrefab(ShopItem item)
     {
-        if (item.Equals(data.items[data.activeIndex]))
-        {
-            return prefabActive;
-        }
-
         return item.status switch
         {
+            ShopItemStatus.Active => prefabActive,
             ShopItemStatus.Unavailable => prefabUnavailable,
             ShopItemStatus.Purchased => prefabPurchased,
             _ => prefabNotPurchased
@@ -59,6 +55,12 @@ public class ShopView : MonoBehaviour
 
     private static void ConfigureItem(GameObject go, ShopItem data)
     {
+        var itemComponent = go.GetComponent<ShopItemComponent>();
+        if (itemComponent)
+        {
+            itemComponent.item = data;
+        }
+        
         foreach (Transform child in go.transform)
         {
             if (child.name == "Sprite")

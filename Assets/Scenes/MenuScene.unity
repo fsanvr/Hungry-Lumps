@@ -988,8 +988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee4f3573dc84eeab63e6d6e8afc5acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultData: {fileID: 11400000, guid: 8643f2f0bbe6b7a43a4e46d129127c15, type: 2}
-  playerData: {fileID: 11400000, guid: ccab6f70e0830854b99755bd5e2334f4, type: 2}
+  shopData: {fileID: 11400000, guid: ccab6f70e0830854b99755bd5e2334f4, type: 2}
+  playerData: {fileID: 11400000, guid: 0e26f4078a0bc614d8c3a88ff094ca53, type: 2}
+  input: {fileID: 2041753597}
 --- !u!4 &1241128014
 Transform:
   m_ObjectHideFlags: 0
@@ -1526,6 +1527,7 @@ GameObject:
   - component: {fileID: 2041753595}
   - component: {fileID: 2041753594}
   - component: {fileID: 2041753593}
+  - component: {fileID: 2041753597}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1617,6 +1619,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2041753597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041753592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4eed65604b436cbbc8b2da99acc4ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2065359410
 PrefabInstance:
   m_ObjectHideFlags: 0
