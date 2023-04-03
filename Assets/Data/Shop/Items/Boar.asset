@@ -15,4 +15,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: d139b48a372802a42b221ad4a1f80911, type: 3}
   nickname: Boar
   purchasePrice: 300
-  status: 1
+  status: 3

@@ -15,4 +15,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: c728868677dfad541b6543a1f2aec055, type: 3}
   nickname: Bread
   purchasePrice: 800
-  status: 1
+  status: 2
