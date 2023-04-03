@@ -663,6 +663,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7541660061996319055, guid: 13c34204bd94e1c40b336bee5c3d762b, type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e26f4078a0bc614d8c3a88ff094ca53, type: 2}
+    - target: {fileID: -7541660061996319055, guid: 13c34204bd94e1c40b336bee5c3d762b, type: 3}
+      propertyPath: levelSystem
+      value: 
+      objectReference: {fileID: 1375604292}
     - target: {fileID: -7246063384220666659, guid: 13c34204bd94e1c40b336bee5c3d762b, type: 3}
       propertyPath: input
       value: 

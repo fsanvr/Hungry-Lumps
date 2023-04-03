@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private LevelSystem levelSystem;
+    [SerializeField] private PlayerData playerData;
     public readonly SatietyUpdateEvent SatietyChanged = new SatietyUpdateEvent();
     private int _minSatiety;
     private int _maxSatiety;
@@ -87,6 +89,7 @@ public class Player : MonoBehaviour
     private void FinishLevel()
     {
         Debug.Log("Finish!");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        playerData.satiety += _satiety;
+        levelSystem.EnableNewLevel();
     }
 }

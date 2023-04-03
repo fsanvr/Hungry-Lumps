@@ -15,7 +15,7 @@ public static class InitData
         _maps = new FoodMap[_shape];
         foreach (var mapIndex in Enumerable.Range(0, _maps.GetLength(0)))
         {
-            var shape = new Vector2Int(Random.Range(2, 5), Random.Range(2, 5));
+            var shape = new Vector2Int(Random.Range(2, 3), Random.Range(2, 3));
             var food = new Food[shape.x, shape.y];
             var sumSatiety = 0;
             

@@ -25,7 +25,6 @@ public class SatietyView : MonoBehaviour
     
     private void AccumulateChanges(float normalizedValue)
     {
-        Debug.Log(normalizedValue);
         _incrementRemainder += normalizedValue - progressBar.localScale.x;
     }
 

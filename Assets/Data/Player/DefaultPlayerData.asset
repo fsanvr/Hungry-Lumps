@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9a1f659fd106d4489deb754ec89573, type: 3}
   m_Name: DefaultPlayerData
   m_EditorClassIdentifier: 
-  satiety: 0
+  satiety: 700
