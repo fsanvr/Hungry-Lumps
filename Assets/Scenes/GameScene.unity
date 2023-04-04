@@ -570,6 +570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f80e1815f5948a4b937ce7a699bd73e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelData: {fileID: 11400000, guid: 3530e65bb82450f498079aef08c2370b, type: 2}
+  gameField: {fileID: 864228658}
 --- !u!4 &802726127
 Transform:
   m_ObjectHideFlags: 0

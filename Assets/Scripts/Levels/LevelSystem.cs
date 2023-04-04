@@ -1,11 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class LevelSystem: MonoBehaviour
 {
-    [SerializeField] private LevelData data;
     [SerializeField] private int menuSceneIndex = 0;
     [SerializeField] private int gameSceneIndex = 1;
+    
+    [SerializeField] private Dictionary<int, FoodMap> _levels;
+    [SerializeField] private LevelData data;
+    
+    private LevelGenerator _generator;
+
+    private void Awake()
+    {
+        _levels = new Dictionary<int, FoodMap>();
+        _generator = new LevelGenerator();
+    }
 
     public void EnableMenu()
     {
@@ -14,15 +27,19 @@ public class LevelSystem: MonoBehaviour
 
     public void EnableLevel(int level)
     {
-        data.enabledLevel = level;
+        data.EnabledLevelKey = level;
         SceneManager.LoadScene(gameSceneIndex);
     }
 
     public void EnableNewLevel()
     {
-        //TODO: как сообщить о генерации нового уровня?
-        //создать тут новый ключ сцены?
-        data.enabledLevel = -1;
+        var levelKey = Random.Range(Int32.MinValue, Int32.MaxValue);
+        var levelValue = _generator.Generate();
+            
+        _levels.Add(levelKey, levelValue);
+        data.EnabledLevelKey = levelKey;
+        data.EnabledLevelMap = levelValue;
+        
         SceneManager.LoadScene(gameSceneIndex);
     }
  }

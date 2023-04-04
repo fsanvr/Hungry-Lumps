@@ -3,5 +3,6 @@
 [CreateAssetMenu]
 public class LevelData : ScriptableObject
 {
-    public int enabledLevel;
+    public int EnabledLevelKey;
+    public FoodMap EnabledLevelMap;
 }

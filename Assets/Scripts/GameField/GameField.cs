@@ -11,15 +11,9 @@ public class GameField : MonoBehaviour
         const float epsilon = 0.01f;
         return Math.Abs((position - cell.position).magnitude - 1.0f) < epsilon;
     }
-    private void Start()
-    {
-        InitField();
-    }
-
-    private void InitField()
+    public void InitField(FoodMap map)
     {
         var level = 0;
-        var map = InitData.GetFoodMap(level);
         
         var fieldShape = new Vector2Int(map.Food.GetLength(0), map.Food.GetLength(1));
         _cells = new Cell[fieldShape.x, fieldShape.y];
