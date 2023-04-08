@@ -3,14 +3,14 @@
 public class SatietyView : MonoBehaviour
 {
     [SerializeField] private Transform progressBar;
-    private float _incrementRemainder;
-    [SerializeField] private float incrementRate = 0.24f;
+    private float _targetValue;
+    [SerializeField] private float updateSpeed = 0.8f;
     private void Awake()
     {
         var player = GameObject.FindWithTag("Player");
         if (player)
         {
-            player.GetComponent<Player>().SatietyChanged.AddListener(AccumulateChanges);
+            player.GetComponent<Player>().SatietyChanged.AddListener(SetTargetValue);
         }
     }
 
@@ -19,39 +19,24 @@ public class SatietyView : MonoBehaviour
         var player = GameObject.FindWithTag("Player");
         if (player)
         {
-            player.GetComponent<Player>().SatietyChanged.RemoveListener(AccumulateChanges);
+            player.GetComponent<Player>().SatietyChanged.RemoveListener(SetTargetValue);
         }
     }
     
-    private void AccumulateChanges(float normalizedValue)
+    private void SetTargetValue(float normalizedValue)
     {
-        _incrementRemainder += normalizedValue - progressBar.localScale.x;
+        _targetValue = normalizedValue;
     }
 
     private void Update()
     {
-        ProcessIncrement();
+        UpdateCurrentValue();
     }
 
-    private void ProcessIncrement()
+    private void UpdateCurrentValue()
     {
-        if (Mathf.Abs(_incrementRemainder) == 0.0f)
-        {
-            return;
-        }
-        
-        var currentScale = progressBar.localScale;
-        var newScale = new Vector3(currentScale.x + GetIncrement(), currentScale.y, currentScale.z);
-        progressBar.localScale = newScale;
-
-        _incrementRemainder -= GetIncrement();
-    }
-
-    private float GetIncrement()
-    {
-        return Mathf.Min(
-            Mathf.Abs(incrementRate) * Time.deltaTime, 
-            Mathf.Abs(_incrementRemainder))
-            * Mathf.Sign(_incrementRemainder);
+        var scale = progressBar.localScale;
+        scale.x = Mathf.Lerp(scale.x, _targetValue, updateSpeed * Time.deltaTime);
+        progressBar.localScale = scale;
     }
 }
