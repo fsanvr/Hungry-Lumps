@@ -11,8 +11,12 @@ public class MenuSystem : MonoBehaviour
         
         foreach (Transform child in root.transform)
         {
-            _views.Add(child.gameObject);
-            child.gameObject.SetActive(child.GetComponent<MenuView>().isBase);
+            var menuComponent = child.GetComponent<MenuView>();
+            if (menuComponent)
+            {
+                _views.Add(child.gameObject);
+                child.gameObject.SetActive(menuComponent.isBase);
+            }
         }
     }
 
