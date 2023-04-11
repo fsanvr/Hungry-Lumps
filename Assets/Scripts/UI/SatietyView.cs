@@ -10,7 +10,7 @@ public class SatietyView : MonoBehaviour
         var player = GameObject.FindWithTag("Player");
         if (player)
         {
-            player.GetComponent<Player>().SatietyChanged.AddListener(SetTargetValue);
+            player.GetComponent<PlayerComponent>().SatietyChanged.AddListener(SetTargetValue);
         }
     }
 
@@ -19,7 +19,7 @@ public class SatietyView : MonoBehaviour
         var player = GameObject.FindWithTag("Player");
         if (player)
         {
-            player.GetComponent<Player>().SatietyChanged.RemoveListener(SetTargetValue);
+            player.GetComponent<PlayerComponent>().SatietyChanged.RemoveListener(SetTargetValue);
         }
     }
     
