@@ -4,7 +4,7 @@ public class MoveSystem : MonoBehaviour
 {
     [SerializeField] private InputSystem input;
     private GameField _gameField;
-    private Player _player;
+    private PlayerComponent _playerComponent;
 
     [SerializeField] private float moveDelayInSeconds = 3.5f;
     private float _currentDelay = 0.0f;
@@ -13,7 +13,7 @@ public class MoveSystem : MonoBehaviour
     {
         input.MouseClicked.AddListener(OnMouseClicked);
         _gameField = GameObject.Find("GameField").GetComponent<GameField>();
-        _player = this.GetComponent<Player>();
+        _playerComponent = this.GetComponent<PlayerComponent>();
     }
     
     private void OnDestroy()
@@ -30,7 +30,6 @@ public class MoveSystem : MonoBehaviour
     {
         if (_currentDelay >= 0.0f)
         {
-            Debug.Log(_currentDelay);
             _currentDelay -= Time.deltaTime;
         }
     }
@@ -40,7 +39,7 @@ public class MoveSystem : MonoBehaviour
         if (IsCell(clicked.gameObject))
         {
             var cell = clicked.GetComponent<Cell>();
-            if (_gameField.IsNeighbour(_player.transform.position, cell) &&
+            if (_gameField.IsNeighbour(_playerComponent.transform.position, cell) &&
                 PlayerCanMove())
             {
                 MovePlayerTo(cell);
@@ -61,6 +60,6 @@ public class MoveSystem : MonoBehaviour
     private void MovePlayerTo(Cell cell)
     {
         _currentDelay = moveDelayInSeconds;
-        _player.MoveTo(cell);
+        _playerComponent.MoveTo(cell);
     }
 }

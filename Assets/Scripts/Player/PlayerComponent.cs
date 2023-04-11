@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class PlayerComponent : MonoBehaviour
 {
     [SerializeField] private LevelSystem levelSystem;
     [SerializeField] private PlayerData playerData;
@@ -11,13 +11,16 @@ public class Player : MonoBehaviour
     private int _satiety;
     private int _costOfMove;
 
-    private void Start()
+    private Pet _pet;
+
+    public void Init(LevelData data)
     {
-        var map = InitData.GetFoodMap(0);
-        _minSatiety = map.MinSatiety;
-        _maxSatiety = map.MaxSatiety;
-        _satiety = map.StartSatiety;
-        _costOfMove = map.CostOfMove;
+        var pet = data.Pet;
+        _pet = pet; //TODO: use it
+        _minSatiety = 0;
+        _maxSatiety = 100;
+        _satiety = 20;
+        _costOfMove = 5;
         
         SatietyChanged.Invoke(NormalizedSatiety());
     }
@@ -29,15 +32,14 @@ public class Player : MonoBehaviour
 
     public void MoveTo(Cell cell)
     {
-        if (PossibleToMove())
+        if (PossibleToMove() && cell.IsPassable())
         {
             Move(cell.position);
-            Eat(cell);
-            Changed();
-            if (cell.isFinish)
+            if (cell.ContainsFood())
             {
-                FinishLevel();
+                Eat(cell);
             }
+            Changed();
         }
 
         if (NotPossibleToMove())

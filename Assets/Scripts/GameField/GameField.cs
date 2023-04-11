@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameField : MonoBehaviour
 {
@@ -11,29 +12,31 @@ public class GameField : MonoBehaviour
         const float epsilon = 0.01f;
         return Math.Abs((position - cell.position).magnitude - 1.0f) < epsilon;
     }
-    public void InitField(FoodMap map)
+
+    public void InitField(LevelData data)
     {
-        var level = 0;
-        
-        var fieldShape = new Vector2Int(map.Food.GetLength(0), map.Food.GetLength(1));
-        _cells = new Cell[fieldShape.x, fieldShape.y];
-        
-        foreach (var x in Enumerable.Range(0, fieldShape.x))
+        var grid = data.Grid;
+        var cellPrefab = data.CellPrefab;
+        var shape = new Vector2Int(grid.Cells.GetLength(0), grid.Cells.GetLength(1));
+        _cells = new Cell[shape.x, shape.y];
+
+        foreach (var x in Enumerable.Range(0, shape.x))
         {
-            foreach (var y in Enumerable.Range(0, fieldShape.y))
+            foreach (var y in Enumerable.Range(0, shape.y))
             {
-                var position = new Vector2Int(x, y);
-                var isFinish = map.FinishCell == position;
-                var cell = InitCell(InitData.GetCellPrefab(level), position, isFinish);
-                if (position != map.StartCell)
+                var cell = grid.Cells[x, y];
+                var position = cell.Position;
+                var cellGO = InitCell(cellPrefab, position);
+                var cellComponent = cellGO.GetComponent<Cell>();
+                if (cellComponent && !cellComponent.ContainsObject() && cell.ObjectComponent is not null)
                 {
-                    AddFood(cell, map.Food[x, y]);
+                    cellComponent.SetObject((ObjectData)cell.ObjectComponent);
                 }
             }
         }
     }
 
-    private GameObject InitCell(GameObject prefab, Vector2Int position, bool isFinish)
+    private GameObject InitCell(GameObject prefab, Vector2Int position)
     {
         var cell = Instantiate(prefab, new Vector3(position.x, position.y, 0),
             Quaternion.identity);
@@ -41,17 +44,13 @@ public class GameField : MonoBehaviour
         
         _cells[position.x, position.y] = cellComponent;
         cellComponent.position = cell.transform.position;
-        cellComponent.isFinish = isFinish;
         cell.transform.parent = this.transform;
 
         return cell;
     }
 
-    private void AddFood(GameObject cell, Food food)
+    public Cell[,] GetCells()
     {
-        var cellComponent = cell.GetComponent<Cell>();
-        cellComponent.SetFood(food.Value);
-        var foodComponent = cell.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        foodComponent.sprite = food.Sprite;
+        return _cells;
     }
 }

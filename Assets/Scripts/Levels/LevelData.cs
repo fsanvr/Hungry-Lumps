@@ -3,6 +3,8 @@
 [CreateAssetMenu]
 public class LevelData : ScriptableObject
 {
-    public int EnabledLevelKey;
-    public FoodMap EnabledLevelMap;
+    public GenerateGrid Grid;
+    public Pet Pet;
+    public GameObject CellPrefab;
+    public Sprite Background;
 }
