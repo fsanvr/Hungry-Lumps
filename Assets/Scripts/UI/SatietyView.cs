@@ -2,30 +2,29 @@
 
 public class SatietyView : MonoBehaviour
 {
+    [SerializeField] private SatietySystem satietySystem;
     [SerializeField] private Transform progressBar;
     private float _targetValue;
     [SerializeField] private float updateSpeed = 0.8f;
     private void Awake()
     {
-        var player = GameObject.FindWithTag("Player");
-        if (player)
+        if (satietySystem)
         {
-            player.GetComponent<PlayerComponent>().SatietyChanged.AddListener(SetTargetValue);
+            satietySystem.SatietyChanged.AddListener(SetTargetValue);
         }
     }
 
     private void OnDestroy()
     {
-        var player = GameObject.FindWithTag("Player");
-        if (player)
+        if (satietySystem)
         {
-            player.GetComponent<PlayerComponent>().SatietyChanged.RemoveListener(SetTargetValue);
+            satietySystem.SatietyChanged.RemoveListener(SetTargetValue);
         }
     }
     
-    private void SetTargetValue(float normalizedValue)
+    private void SetTargetValue(float max, float before, float after)
     {
-        _targetValue = normalizedValue;
+        _targetValue = after / max;
     }
 
     private void Update()

@@ -2,16 +2,16 @@
 
 public class FoodGenerator
 {
-    private GameField _grid;
+    private GridSystem _grid;
 
-    public FoodGenerator(GameField grid)
+    public FoodGenerator(GridSystem grid)
     {
         _grid = grid;
     }
 
     public void GenerateFood()
     {
-        var cells = _grid.GetCells();
+        var cells = _grid.Cells;
         var prefab = Resources.Load<GameObject>("Prefabs/FoodPrefab");
         var sprite = Resources.Load<Sprite>("Food/Avocado");
         var prize = 1.0f;

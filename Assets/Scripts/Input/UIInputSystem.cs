@@ -3,9 +3,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIInputSystem : MonoBehaviour
+public class UIInputSystem : BlockableBehaviour
 {
     public readonly UIMouseClickEvent MouseClicked = new UIMouseClickEvent();
+
     private GraphicRaycaster _raycaster;
     private PointerEventData _eventData;
     private EventSystem _eventSystem;
@@ -23,6 +24,10 @@ public class UIInputSystem : MonoBehaviour
 
     private void HandleMouseClick()
     {
+        if (IsBlocked())
+        {
+            return;
+        }
         if (IsMouseInput())
         {
             var results = Raycast();

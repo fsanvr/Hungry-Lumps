@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-public class FoodGenerateSystem : MonoBehaviour
+public class FoodGenerateSystem : InitializableBehaviour
 {
-    [SerializeField] private GameField grid;
-    private FoodGenerator _generator;
+    [SerializeField] private GridSystem grid;
     [SerializeField] private float timeToGenerate = 2.0f;
+    private FoodGenerator _generator;
 
-    private void Start()
+    protected override void MyInit(LevelData data)
     {
         _generator = new FoodGenerator(grid);
         StartCoroutine(Generate());

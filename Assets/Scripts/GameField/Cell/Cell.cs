@@ -58,6 +58,26 @@ public class Cell : MonoBehaviour
     {
         return _bonusComponent is not null;
     }
+    
+    public void SetBonus(BonusData bonus)
+    {
+        if (ContainsBonus())
+        {
+            ClearBonus();
+        }
+        _bonusComponent = BonusComponent.Instantiate(this.gameObject, bonus);
+    }
+    
+    public Buff GetBonus()
+    {
+        return _bonusComponent.Buff;
+    }
+
+    public void ClearBonus()
+    {
+        _bonusComponent.Destroy();
+        _foodComponent = null;
+    }
 
     public bool IsPassable()
     {

@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class InputSystem : MonoBehaviour
+public class InputSystem : BlockableBehaviour
 {
     public readonly MouseClickEvent MouseClicked = new MouseClickEvent();
 
@@ -12,6 +11,10 @@ public class InputSystem : MonoBehaviour
 
     private void HandleMouseClick()
     {
+        if (IsBlocked())
+        {
+            return;
+        }
         if (IsMouseInput())
         {
             var screenPosition = Camera.main.ScreenPointToRay(Input.mousePosition).origin;

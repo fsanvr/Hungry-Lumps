@@ -1,24 +1,28 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class GameField : MonoBehaviour
+public class GridSystem : InitializableBehaviour
 {
-    private Cell[,] _cells;
-    
+    public Cell[,] Cells { get; private set; }
+
     public bool IsNeighbour(Vector2 position, Cell cell)
     {
         const float epsilon = 0.01f;
         return Math.Abs((position - cell.position).magnitude - 1.0f) < epsilon;
     }
 
-    public void InitField(LevelData data)
+    protected override void MyInit(LevelData data)
+    {
+        InitField(data);
+    }
+
+    private void InitField(LevelData data)
     {
         var grid = data.Grid;
         var cellPrefab = data.CellPrefab;
         var shape = new Vector2Int(grid.Cells.GetLength(0), grid.Cells.GetLength(1));
-        _cells = new Cell[shape.x, shape.y];
+        Cells = new Cell[shape.x, shape.y];
 
         foreach (var x in Enumerable.Range(0, shape.x))
         {
@@ -42,15 +46,10 @@ public class GameField : MonoBehaviour
             Quaternion.identity);
         var cellComponent = cell.GetComponent<Cell>();
         
-        _cells[position.x, position.y] = cellComponent;
+        Cells[position.x, position.y] = cellComponent;
         cellComponent.position = cell.transform.position;
         cell.transform.parent = this.transform;
 
         return cell;
-    }
-
-    public Cell[,] GetCells()
-    {
-        return _cells;
     }
 }
