@@ -30,26 +30,34 @@ public class Cell : MonoBehaviour
 
     public void ClearFood()
     {
+        if (_foodComponent is null)
+        {
+            return;
+        }
         _foodComponent.Destroy();
         _foodComponent = null;
     }
     
-    public bool ContainsObject()
+    public bool ContainsWall()
     {
         return _wallComponent is not null;
     }
     
-    public void SetObject(WallData obj)
+    public void SetWall(WallData obj)
     {
-        if (ContainsObject())
+        if (ContainsWall())
         {
-            ClearObject();
+            ClearWall();
         }
         _wallComponent = WallComponent.Instantiate(this.gameObject, obj);
     }
 
-    public void ClearObject()
+    public void ClearWall()
     {
+        if (_wallComponent is null)
+        {
+            return;
+        }
         _wallComponent.Destroy();
         _wallComponent = null;
     }
@@ -75,13 +83,17 @@ public class Cell : MonoBehaviour
 
     public void ClearBonus()
     {
+        if (_bonusComponent is null)
+        {
+            return;
+        }
         _bonusComponent.Destroy();
-        _foodComponent = null;
+        _bonusComponent = null;
     }
 
     public bool IsPassable()
     {
-        return !ContainsObject() || _wallComponent.Passable;
+        return !ContainsWall() || _wallComponent.Passable;
     }
     
     public bool IsNotPassable()

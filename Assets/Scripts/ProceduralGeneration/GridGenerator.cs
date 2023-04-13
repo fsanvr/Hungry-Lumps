@@ -5,7 +5,7 @@ public class GridGenerator
 {
     public GenerateGrid Generate()
     {
-        var cells = new GenerateCell[3, 3];
+        var cells = new GenerateCell[4, 4];
         foreach (var x in Enumerable.Range(0, cells.GetLength(0)))
         {
             foreach (var y in Enumerable.Range(0, cells.GetLength(1)))
@@ -31,7 +31,7 @@ public class GridGenerator
         return new GenerateGrid
         {
             Cells = cells,
-            StartPosition = new Vector2Int(1, 1)
+            StartPosition = new Vector2Int(0, 0)
         };
     }
 }

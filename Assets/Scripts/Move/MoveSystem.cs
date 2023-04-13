@@ -1,68 +1,43 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class MoveSystem : InitializableBehaviour
 {
     [SerializeField] private InputSystem input;
     [SerializeField] private SatietySystem satietySystem;
-    [SerializeField] private PlayerComponent playerComponent;
     [SerializeField] private GridSystem gridSystem;
+    [SerializeField] private PlayerComponent playerComponent;
 
-    [SerializeField] private float moveDelayInSeconds = 3.5f;
-    private float _currentDelay = 0.0f;
+    [SerializeField] private BuffableSystemsDictionary dictionary; //TODO: выделить в систему
+    
+    [SerializeField] public PathDrawer pathDrawer;
 
-    private float _moveCost;
-
-    [SerializeField] private BuffableSystemsDictionary dictionary;
+    private MovePattern _movePattern;
 
     protected override void MyInit(LevelData data)
     {
-        input.MouseClicked.AddListener(OnMouseClicked);
-        _moveCost = 2.0f;
-        //_moveCost = data.Pet.MoveComponent.GetCostOfMove();
+        _movePattern = new MovePattern(input, satietySystem, gridSystem, playerComponent);
+        _movePattern.PlayerMoved.AddListener(MovePlayerTo);
     }
 
     private void OnDestroy()
     {
-        input.MouseClicked.RemoveListener(OnMouseClicked);
+        if (_movePattern is not null)
+        {
+            _movePattern.PlayerMoved.RemoveListener(MovePlayerTo);
+        }
     }
-    
+
     private void Update()
     {
-        ProcessDelay();
+        _movePattern.Update();
+        UpdatePath();
     }
 
-    private void ProcessDelay()
+    private void UpdatePath()
     {
-        if (_currentDelay >= 0.0f)
-        {
-            _currentDelay -= Time.deltaTime;
-        }
-    }
-
-    private void OnMouseClicked(Collider2D clicked)
-    {
-        if (IsCell(clicked.gameObject))
-        {
-            var cell = clicked.GetComponent<Cell>();
-            if (gridSystem.IsNeighbour(playerComponent.transform.position, cell) &&
-                cell.IsPassable() &&
-                PlayerCanMove())
-            {
-                MovePlayerTo(cell);
-            }
-        }
-    }
-    
-    private static bool IsCell(GameObject go)
-    {
-        return go.GetComponent<Cell>() != null;
-    }
-    
-    private bool PlayerCanMove()
-    {
-        return _currentDelay <= 0.0f && satietySystem.CurrentSatiety >= _moveCost;
+        var cells = _movePattern.GetCellToDraw();
+        pathDrawer.Draw(cells);
     }
 
     private void MovePlayerTo(Cell cell)
@@ -74,7 +49,7 @@ public class MoveSystem : InitializableBehaviour
         }
         else
         {
-            satietySystem.DecreaseSatiety(_moveCost);
+            satietySystem.DecreaseSatiety(_movePattern.MoveCost);
         }
 
         if (cell.ContainsBonus())
@@ -82,7 +57,6 @@ public class MoveSystem : InitializableBehaviour
             ProcessBuff(cell.GetBonus());
             cell.ClearBonus();
         }
-        _currentDelay = moveDelayInSeconds;
         playerComponent.transform.position = cell.position;
     }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -6,6 +7,47 @@ public class GridSystem : InitializableBehaviour
 {
     public Cell[,] Cells { get; private set; }
 
+    public Cell GetCell(Vector2 position)
+    {
+        return Cells[Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y)];
+    }
+
+    public List<Cell> GetCellBetween(Vector2 pos1, Vector2 pos2)
+    {
+        var dx = Mathf.FloorToInt(pos2.x - pos1.x);
+        var dy = Mathf.FloorToInt(pos2.y - pos1.y);
+        if (dx != 0 && dy != 0)
+        {
+            return null;
+        }
+
+        var cells = new List<Cell>();
+        
+        if (dx != 0 && dy == 0)
+        {
+            for (var x = 0; x != dx; x += Math.Sign(dx))
+            {
+                var pos = new Vector2Int(
+                    Mathf.FloorToInt(pos1.x + x), 
+                    Mathf.FloorToInt(pos1.y)
+                    );
+                cells.Add(Cells[pos.x, pos.y]);
+            }
+        }
+        else if (dy != 0 && dx == 0)
+        {
+            for (var y = 0; y != dy; y += Math.Sign(dy))
+            {
+                var pos = new Vector2Int(
+                    Mathf.FloorToInt(pos1.x), 
+                    Mathf.FloorToInt(pos1.y + y)
+                );
+                cells.Add(Cells[pos.x, pos.y]);
+            }
+        }
+
+        return cells;
+    }
     public bool IsNeighbour(Vector2 position, Cell cell)
     {
         const float epsilon = 0.01f;
@@ -32,9 +74,9 @@ public class GridSystem : InitializableBehaviour
                 var position = cell.Position;
                 var cellGO = InitCell(cellPrefab, position);
                 var cellComponent = cellGO.GetComponent<Cell>();
-                if (cellComponent && !cellComponent.ContainsObject() && cell.ObjectComponent is not null)
+                if (cellComponent && !cellComponent.ContainsWall() && cell.ObjectComponent is not null)
                 {
-                    cellComponent.SetObject((WallData)cell.ObjectComponent);
+                    cellComponent.SetWall((WallData)cell.ObjectComponent);
                 }
             }
         }
