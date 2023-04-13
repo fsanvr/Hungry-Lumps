@@ -34,7 +34,7 @@ public class GridSystem : InitializableBehaviour
                 var cellComponent = cellGO.GetComponent<Cell>();
                 if (cellComponent && !cellComponent.ContainsObject() && cell.ObjectComponent is not null)
                 {
-                    cellComponent.SetObject((ObjectData)cell.ObjectComponent);
+                    cellComponent.SetObject((WallData)cell.ObjectComponent);
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public struct ObjectData
+public struct WallData
 {
     public GameObject Prefab;
     public Sprite Sprite;

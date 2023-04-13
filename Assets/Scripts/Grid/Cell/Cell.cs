@@ -3,7 +3,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     private FoodComponent _foodComponent = null;
-    private ObjectComponent _objectComponent = null;
+    private WallComponent _wallComponent = null;
     private BonusComponent _bonusComponent = null;
     //[SerializeField] private Vector2 position;
     
@@ -36,22 +36,22 @@ public class Cell : MonoBehaviour
     
     public bool ContainsObject()
     {
-        return _objectComponent is not null;
+        return _wallComponent is not null;
     }
     
-    public void SetObject(ObjectData obj)
+    public void SetObject(WallData obj)
     {
         if (ContainsObject())
         {
             ClearObject();
         }
-        _objectComponent = ObjectComponent.Instantiate(this.gameObject, obj);
+        _wallComponent = WallComponent.Instantiate(this.gameObject, obj);
     }
 
     public void ClearObject()
     {
-        _objectComponent.Destroy();
-        _objectComponent = null;
+        _wallComponent.Destroy();
+        _wallComponent = null;
     }
     
     public bool ContainsBonus()
@@ -81,7 +81,7 @@ public class Cell : MonoBehaviour
 
     public bool IsPassable()
     {
-        return !ContainsObject() || _objectComponent.Passable;
+        return !ContainsObject() || _wallComponent.Passable;
     }
     
     public bool IsNotPassable()

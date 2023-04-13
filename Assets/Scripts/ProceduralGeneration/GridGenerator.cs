@@ -10,10 +10,10 @@ public class GridGenerator
         {
             foreach (var y in Enumerable.Range(0, cells.GetLength(1)))
             {
-                ObjectData? data = null;
+                WallData? data = null;
                 if (Random.Range(0, 7) == 2)
                 {
-                    data = new ObjectData
+                    data = new WallData
                     {
                         Prefab = Resources.Load<GameObject>("Prefabs/ObjectPrefab"),
                         Sprite = Resources.Load<Sprite>("Food/Lemon"),
