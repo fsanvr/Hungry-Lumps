@@ -1,8 +1,26 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 public class InputSystem : BlockableBehaviour
 {
     public readonly MouseClickEvent MouseClicked = new MouseClickEvent();
+    public readonly MouseClickEvent MouseReleased = new MouseClickEvent();
+    private const string MouseKeyName = "MouseLeftButton";
+
+    private static bool IsMouseClicked()
+    {
+        return Input.GetButtonDown(MouseKeyName);
+    }
+
+    private static bool IsMouseReleased()
+    {
+        return Input.GetButtonUp(MouseKeyName);
+    }
+
+    public Vector3 GetMousePosition()
+    {
+        return Input.mousePosition;
+    }
 
     private void Update()
     {
@@ -11,35 +29,34 @@ public class InputSystem : BlockableBehaviour
 
     private void HandleMouseClick()
     {
-        if (IsBlocked())
+        if (IsBlocked() || Camera.main is null)
         {
             return;
         }
-        if (IsMouseInput())
+
+        var screenPosition = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+        
+        if (IsMouseClicked())
         {
-            var screenPosition = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
             var clicked = GetClicked(screenPosition);
             if (clicked)
             { 
                 MouseClicked.Invoke(clicked);
             }
         }
+
+        if (IsMouseReleased())
+        {
+            var clicked = GetClicked(screenPosition);
+            MouseReleased.Invoke(clicked);
+        }
     }
     
-    private static bool IsMouseInput()
-    {
-        return Input.GetMouseButtonDown(0);
-    }
-    
+    [CanBeNull]
     private Collider2D GetClicked(Vector2 clickPosition)
     {
         var direction = Vector2.zero;
         var hit = Physics2D.Raycast(clickPosition, direction);
-        if (hit)
-        {
-            return hit.collider;
-        }
-
-        return null;
+        return hit? hit.collider : null;
     }
 }

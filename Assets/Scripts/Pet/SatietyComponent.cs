@@ -1,16 +1,19 @@
-﻿public class SatietyComponent
+﻿using System;
+
+[Serializable]
+public class SatietyComponent
 {
-    private int _satietyBase;
-    private int _satietyMaxAdditional;
-    private int _satietyUpgradeCost;
+    public int satietyBase;
+    public int satietyMaxAdditional;
+    public int satietyUpgradeCost;
 
     public int GetUpgradeCost()
     {
-        return _satietyUpgradeCost;
+        return satietyUpgradeCost;
     }
 
     public int GetSatiety()
     {
-        return _satietyBase + _satietyMaxAdditional;
+        return satietyBase; // + satietyMaxAdditional;
     }
 }

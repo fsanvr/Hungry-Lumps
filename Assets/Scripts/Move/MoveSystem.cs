@@ -1,72 +1,59 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveSystem : InitializableBehaviour
 {
     [SerializeField] private InputSystem input;
     [SerializeField] private SatietySystem satietySystem;
-    [SerializeField] private PlayerComponent playerComponent;
     [SerializeField] private GridSystem gridSystem;
+    [SerializeField] private PlayerComponent playerComponent;
+    [SerializeField] private BuffSystem buffSystem;
+    [SerializeField] private PathDrawer pathDrawer;
 
-    [SerializeField] private float moveDelayInSeconds = 3.5f;
-    private float _currentDelay = 0.0f;
-
-    private float _moveCost;
-
-    [SerializeField] private BuffableSystemsDictionary dictionary;
+    private MovePattern _movePattern;
 
     protected override void MyInit(LevelData data)
     {
-        input.MouseClicked.AddListener(OnMouseClicked);
-        _moveCost = 2.0f;
-        //_moveCost = data.Pet.MoveComponent.GetCostOfMove();
+        _movePattern = InitPattern(data.pet.moveComponent.moveData);
+        _movePattern.PlayerMoved.AddListener(MovePlayerTo);
+    }
+
+    private MovePattern InitPattern(MoveData data)
+    {
+        return data.type switch
+        {
+            MovePatternType.One => new LineMovePattern(input, gridSystem, playerComponent, data),
+            MovePatternType.Line => new LineMovePattern(input, gridSystem, playerComponent, data),
+            _ => new LineMovePattern(input, gridSystem, playerComponent, data)
+        };
     }
 
     private void OnDestroy()
     {
-        input.MouseClicked.RemoveListener(OnMouseClicked);
+        if (_movePattern is not null)
+        {
+            _movePattern.PlayerMoved.RemoveListener(MovePlayerTo);
+        }
     }
-    
+
     private void Update()
     {
-        ProcessDelay();
+        _movePattern.Update();
+        UpdatePath();
     }
 
-    private void ProcessDelay()
+    private void UpdatePath()
     {
-        if (_currentDelay >= 0.0f)
-        {
-            _currentDelay -= Time.deltaTime;
-        }
-    }
-
-    private void OnMouseClicked(Collider2D clicked)
-    {
-        if (IsCell(clicked.gameObject))
-        {
-            var cell = clicked.GetComponent<Cell>();
-            if (gridSystem.IsNeighbour(playerComponent.transform.position, cell) &&
-                cell.IsPassable() &&
-                PlayerCanMove())
-            {
-                MovePlayerTo(cell);
-            }
-        }
-    }
-    
-    private static bool IsCell(GameObject go)
-    {
-        return go.GetComponent<Cell>() != null;
-    }
-    
-    private bool PlayerCanMove()
-    {
-        return _currentDelay <= 0.0f && satietySystem.CurrentSatiety >= _moveCost;
+        var cells = _movePattern.CellToMove;
+        pathDrawer.Draw(cells);
     }
 
     private void MovePlayerTo(Cell cell)
     {
+        if (!PlayerCanMove())
+        {
+            return;
+        }
+        
         if (cell.ContainsFood())
         {
             satietySystem.FillSatiety();
@@ -74,24 +61,20 @@ public class MoveSystem : InitializableBehaviour
         }
         else
         {
-            satietySystem.DecreaseSatiety(_moveCost);
+            satietySystem.DecreaseSatiety(_movePattern.MoveCost);
         }
 
         if (cell.ContainsBonus())
         {
-            ProcessBuff(cell.GetBonus());
+            buffSystem.ProcessBuff(cell.GetBonus());
             cell.ClearBonus();
         }
-        _currentDelay = moveDelayInSeconds;
-        playerComponent.transform.position = cell.position;
+        
+        playerComponent.Move(cell);
     }
 
-    private void ProcessBuff(Buff buff)
+    private bool PlayerCanMove()
     {
-        var system = dictionary.GetValueOrDefault(buff.SystemName, null);
-        if (system)
-        {
-            ((Buffable)system).AddBuff(buff);
-        }
+        return satietySystem.CurrentSatiety >= _movePattern.MoveCost;
     }
 }

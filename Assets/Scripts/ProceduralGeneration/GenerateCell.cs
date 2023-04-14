@@ -2,6 +2,7 @@
 
 public struct GenerateCell
 {
-    public ObjectData? ObjectComponent;
+    public WallData? ObjectComponent;
     public Vector2Int Position;
+    public Sprite Sprite;
 }

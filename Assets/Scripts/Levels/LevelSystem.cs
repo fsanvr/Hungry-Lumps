@@ -11,7 +11,7 @@ public class LevelSystem: MonoBehaviour
 
     private void Awake()
     {
-        _generator = new GridGenerator();
+        _generator = new GridGenerator(data);
     }
 
     public void EnableMenu()
@@ -23,7 +23,6 @@ public class LevelSystem: MonoBehaviour
     {
         var grid = _generator.Generate();
         data.Grid = grid;
-        data.CellPrefab = Resources.Load<GameObject>("Prefabs/Cell");
         
         SceneManager.LoadScene(gameSceneIndex);
     }
