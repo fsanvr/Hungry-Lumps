@@ -5,6 +5,11 @@ public class LevelData : ScriptableObject
 {
     public GenerateGrid Grid;
     public Pet pet;
+    
     public GameObject cellPrefab;
-    public Sprite background;
+    public GameObject foodPrefab;
+    public GameObject objectPrefab;
+    public GameObject bonusPrefab;
+    
+    public SpritesData spritesData;
 }

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d7a232c47d485f88b8b85ac0ec2d16, type: 3}
-  m_Name: TwoStepMove
+  m_Script: {fileID: 11500000, guid: 35aff3de0c024e7a96b7f4e5cf47d8ce, type: 3}
+  m_Name: FirstSprites
   m_EditorClassIdentifier: 
-  type: 1
-  moveCost: 2
-  moveDuration: 0.2
-  maxSteps: 2
+  background: {fileID: 0}
+  cells: []
+  walls: []
+  food: []

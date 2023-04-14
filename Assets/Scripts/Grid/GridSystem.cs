@@ -80,7 +80,7 @@ public class GridSystem : InitializableBehaviour
             {
                 var cell = grid.Cells[x, y];
                 var position = cell.Position;
-                var cellGO = InitCell(cellPrefab, position);
+                var cellGO = InitCell(cellPrefab, cell.Sprite, position);
                 var cellComponent = cellGO.GetComponent<Cell>();
                 if (cellComponent && !cellComponent.ContainsWall() && cell.ObjectComponent is not null)
                 {
@@ -90,10 +90,11 @@ public class GridSystem : InitializableBehaviour
         }
     }
 
-    private GameObject InitCell(GameObject prefab, Vector2Int position)
+    private GameObject InitCell(GameObject prefab, Sprite sprite, Vector2Int position)
     {
         var cell = Instantiate(prefab, new Vector3(position.x, position.y, 0),
             Quaternion.identity);
+        SetSprite(cell, sprite);
         var cellComponent = cell.GetComponent<Cell>();
         
         Cells[position.x, position.y] = cellComponent;
@@ -101,5 +102,14 @@ public class GridSystem : InitializableBehaviour
         cell.transform.parent = this.transform;
 
         return cell;
+    }
+    
+    private static void SetSprite(GameObject go, Sprite sprite)
+    {
+        var spriteRenderer = go.GetComponent<SpriteRenderer>();
+        if (spriteRenderer)
+        {
+            spriteRenderer.sprite = sprite;
+        }
     }
 }

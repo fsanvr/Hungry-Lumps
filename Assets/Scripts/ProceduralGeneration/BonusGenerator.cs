@@ -2,18 +2,22 @@
 
 public class BonusGenerator
 {
+    private readonly GameObject _bonusPrefab;
+    private readonly Sprite[] _bonuses;
     private GridSystem _grid;
 
-    public BonusGenerator(GridSystem grid)
+    public BonusGenerator(LevelData data,GridSystem grid)
     {
+        _bonusPrefab = data.bonusPrefab;
+        _bonuses = data.spritesData.bonuses;
         _grid = grid;
     }
 
     public void GenerateBonus()
     {
         var cells = _grid.Cells;
-        var prefab = Resources.Load<GameObject>("Prefabs/BonusPrefab");
-        var sprite = Resources.Load<Sprite>("Food/Roll");
+        var prefab = _bonusPrefab;
+        var sprite = _bonuses[Random.Range(0, _bonuses.GetLength(0))];
         var bonusComponent = new BonusData
         {
             Prefab = prefab,

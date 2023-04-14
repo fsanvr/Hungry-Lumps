@@ -9,7 +9,7 @@ public class FoodGenerateSystem : InitializableBehaviour
 
     protected override void MyInit(LevelData data)
     {
-        _generator = new FoodGenerator(grid);
+        _generator = new FoodGenerator(data, grid);
         StartCoroutine(Generate());
     }
 
