@@ -22,10 +22,18 @@ public class GridSystem : InitializableBehaviour
         }
 
         var cells = new List<Cell>();
-        
-        if (dx != 0 && dy == 0)
+
+        if (dx == 0 && dy == 0)
         {
-            for (var x = 0; x != dx; x += Math.Sign(dx))
+            var pos = new Vector2Int(
+                Mathf.FloorToInt(pos1.x), 
+                Mathf.FloorToInt(pos1.y)
+            );
+            cells.Add(Cells[pos.x, pos.y]);
+        }
+        else if (dx != 0 && dy == 0)
+        {
+            for (var x = 0; Math.Abs(x) <= Math.Abs(dx); x += Math.Sign(dx))
             {
                 var pos = new Vector2Int(
                     Mathf.FloorToInt(pos1.x + x), 
@@ -36,7 +44,7 @@ public class GridSystem : InitializableBehaviour
         }
         else if (dy != 0 && dx == 0)
         {
-            for (var y = 0; y != dy; y += Math.Sign(dy))
+            for (var y = 0; Math.Abs(y) <= Math.Abs(dy); y += Math.Sign(dy))
             {
                 var pos = new Vector2Int(
                     Mathf.FloorToInt(pos1.x), 

@@ -16,8 +16,25 @@ public class MoveSystem : InitializableBehaviour
 
     protected override void MyInit(LevelData data)
     {
-        _movePattern = new MovePattern(input, satietySystem, gridSystem, playerComponent);
+        var moveData = new MoveData
+        {
+            type = MovePatternType.Line,
+            moveCost = 2,
+            maxSteps = 2
+        };
+        //movePattern = InitPattern(data.Pet.MoveComponent.MoveData);
+        _movePattern = InitPattern(moveData);
         _movePattern.PlayerMoved.AddListener(MovePlayerTo);
+    }
+
+    private MovePattern InitPattern(MoveData data)
+    {
+        return data.type switch
+        {
+            MovePatternType.One => new LineMovePattern(input, gridSystem, playerComponent, data),
+            MovePatternType.Line => new LineMovePattern(input, gridSystem, playerComponent, data),
+            _ => new LineMovePattern(input, gridSystem, playerComponent, data)
+        };
     }
 
     private void OnDestroy()
@@ -36,12 +53,17 @@ public class MoveSystem : InitializableBehaviour
 
     private void UpdatePath()
     {
-        var cells = _movePattern.GetCellToDraw();
+        var cells = _movePattern.CellToMove;
         pathDrawer.Draw(cells);
     }
 
     private void MovePlayerTo(Cell cell)
     {
+        if (!PlayerCanMove())
+        {
+            return;
+        }
+        
         if (cell.ContainsFood())
         {
             satietySystem.FillSatiety();
@@ -58,6 +80,11 @@ public class MoveSystem : InitializableBehaviour
             cell.ClearBonus();
         }
         playerComponent.transform.position = cell.position;
+    }
+
+    private bool PlayerCanMove()
+    {
+        return satietySystem.CurrentSatiety >= _movePattern.MoveCost;
     }
 
     private void ProcessBuff(Buff buff)
