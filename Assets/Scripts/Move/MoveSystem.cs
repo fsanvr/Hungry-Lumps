@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveSystem : InitializableBehaviour
 {
@@ -70,7 +69,8 @@ public class MoveSystem : InitializableBehaviour
             buffSystem.ProcessBuff(cell.GetBonus());
             cell.ClearBonus();
         }
-        playerComponent.transform.position = cell.position;
+        
+        playerComponent.Move(cell);
     }
 
     private bool PlayerCanMove()

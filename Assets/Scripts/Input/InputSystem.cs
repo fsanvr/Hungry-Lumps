@@ -5,21 +5,14 @@ public class InputSystem : BlockableBehaviour
 {
     public readonly MouseClickEvent MouseClicked = new MouseClickEvent();
     public readonly MouseClickEvent MouseReleased = new MouseClickEvent();
-
-    private bool _isMouseClamped;
     private const string MouseKeyName = "MouseLeftButton";
 
-    public bool IsMouseClicked()
+    private static bool IsMouseClicked()
     {
         return Input.GetButtonDown(MouseKeyName);
     }
 
-    public bool IsMouseClamped()
-    {
-        return _isMouseClamped;
-    }
-    
-    public bool IsMouseReleased()
+    private static bool IsMouseReleased()
     {
         return Input.GetButtonUp(MouseKeyName);
     }
@@ -36,16 +29,15 @@ public class InputSystem : BlockableBehaviour
 
     private void HandleMouseClick()
     {
-        if (IsBlocked())
+        if (IsBlocked() || Camera.main is null)
         {
             return;
         }
-        
+
         var screenPosition = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
         
         if (IsMouseClicked())
         {
-            _isMouseClamped = true;
             var clicked = GetClicked(screenPosition);
             if (clicked)
             { 
@@ -55,7 +47,6 @@ public class InputSystem : BlockableBehaviour
 
         if (IsMouseReleased())
         {
-            _isMouseClamped = false;
             var clicked = GetClicked(screenPosition);
             MouseReleased.Invoke(clicked);
         }

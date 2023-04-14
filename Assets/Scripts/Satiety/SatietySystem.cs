@@ -6,6 +6,7 @@ public class SatietySystem : InitializableBehaviour, Buffable
 {
     public readonly SatietyUpdateEvent SatietyChanged = new SatietyUpdateEvent();
     public float CurrentSatiety { get; private set; }
+    
     [SerializeField] private LevelEndSystem levelEndSystem;
     [SerializeField] private float decreaseSpeed = 0.5f;
     private readonly List<Buff> _buffs = new List<Buff>();
@@ -13,8 +14,7 @@ public class SatietySystem : InitializableBehaviour, Buffable
     
     protected override void MyInit(LevelData data)
     {
-        //_maxSatiety = data.Pet.SatietyComponent.GetSatiety();
-        _maxSatiety = 20;
+        _maxSatiety = data.pet.satietyComponent.GetSatiety();
         CurrentSatiety = _maxSatiety;
     }
 

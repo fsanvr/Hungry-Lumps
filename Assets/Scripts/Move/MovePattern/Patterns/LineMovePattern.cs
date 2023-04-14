@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LineMovePattern : MovePattern
 {
-    private const float MoveDelayInSeconds = 0.2f;
+    private readonly float _moveDelayInSeconds;
     private float _currentDelay;
     
     private bool _isMouseClamped;
@@ -13,6 +13,7 @@ public class LineMovePattern : MovePattern
     public LineMovePattern(InputSystem inputSystem, GridSystem gridSystem, PlayerComponent playerComponent, MoveData data) 
         : base(inputSystem, gridSystem, playerComponent)
     {
+        _moveDelayInSeconds = data.moveDuration;
         MoveCost = data.moveCost;
         _maxSteps = data.maxSteps;
         if (Input)
@@ -104,7 +105,7 @@ public class LineMovePattern : MovePattern
         
         PlayerMoved.Invoke(CellToMove.Last());
         CellToMove.Clear();
-        _currentDelay = MoveDelayInSeconds;
+        _currentDelay = _moveDelayInSeconds;
     }
 
     private bool PlayerCanMove()

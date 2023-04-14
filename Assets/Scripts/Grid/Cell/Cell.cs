@@ -30,11 +30,7 @@ public class Cell : MonoBehaviour
 
     public void ClearFood()
     {
-        if (_foodComponent is null)
-        {
-            return;
-        }
-        _foodComponent.Destroy();
+        _foodComponent?.Destroy();
         _foodComponent = null;
     }
     
@@ -54,11 +50,7 @@ public class Cell : MonoBehaviour
 
     public void ClearWall()
     {
-        if (_wallComponent is null)
-        {
-            return;
-        }
-        _wallComponent.Destroy();
+        _wallComponent?.Destroy();
         _wallComponent = null;
     }
     
@@ -83,11 +75,7 @@ public class Cell : MonoBehaviour
 
     public void ClearBonus()
     {
-        if (_bonusComponent is null)
-        {
-            return;
-        }
-        _bonusComponent.Destroy();
+        _bonusComponent?.Destroy();
         _bonusComponent = null;
     }
 

@@ -14,6 +14,6 @@ public class SatietyComponent
 
     public int GetSatiety()
     {
-        return satietyBase + satietyMaxAdditional;
+        return satietyBase; // + satietyMaxAdditional;
     }
 }

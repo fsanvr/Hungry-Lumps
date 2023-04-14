@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: -2076074925, guid: c63ba3bbffe37d3499d66d1c9fb1229f, type: 3}
   animator: {fileID: 0}
+  satietyComponent:
+    satietyBase: 40
+    satietyMaxAdditional: 60
+    satietyUpgradeCost: 0
   moveComponent:
     moveData: {fileID: 11400000, guid: 3bbbfc93a629432449dbd50aeec6cda0, type: 2}

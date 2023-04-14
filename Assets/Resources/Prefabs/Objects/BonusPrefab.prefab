@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2846572834765733408}
   - component: {fileID: 401237972111777745}
-  - component: {fileID: 5654615225939777658}
+  - component: {fileID: 829866903339355378}
   m_Layer: 0
-  m_Name: FoodPrefab
+  m_Name: BonusPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5654615225939777658
+--- !u!114 &829866903339355378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 475714928435925084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34af1d211bcc47eebf12a4f3e22cf859, type: 3}
+  m_Script: {fileID: 11500000, guid: 6be6629129a942288420ff798f836a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
