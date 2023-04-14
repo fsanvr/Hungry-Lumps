@@ -16,14 +16,7 @@ public class MoveSystem : InitializableBehaviour
 
     protected override void MyInit(LevelData data)
     {
-        var moveData = new MoveData
-        {
-            type = MovePatternType.Line,
-            moveCost = 2,
-            maxSteps = 2
-        };
-        //movePattern = InitPattern(data.Pet.MoveComponent.MoveData);
-        _movePattern = InitPattern(moveData);
+        _movePattern = InitPattern(data.pet.moveComponent.moveData);
         _movePattern.PlayerMoved.AddListener(MovePlayerTo);
     }
 

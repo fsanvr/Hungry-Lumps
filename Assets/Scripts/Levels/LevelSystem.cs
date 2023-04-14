@@ -23,7 +23,8 @@ public class LevelSystem: MonoBehaviour
     {
         var grid = _generator.Generate();
         data.Grid = grid;
-        data.CellPrefab = Resources.Load<GameObject>("Prefabs/Cell");
+        data.cellPrefab = Resources.Load<GameObject>("Prefabs/Cell");
+        data.pet = Resources.Load<Pet>("Data/Pets/Cat/Cat");
         
         SceneManager.LoadScene(gameSceneIndex);
     }
