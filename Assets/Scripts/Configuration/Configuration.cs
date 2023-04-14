@@ -3,5 +3,5 @@
 [CreateAssetMenu]
 public class Configuration : ScriptableObject
 {
-    [SerializeField] public GameObject currentPlayerPrefab;
+    [SerializeField] public Pet currentPet;
 }

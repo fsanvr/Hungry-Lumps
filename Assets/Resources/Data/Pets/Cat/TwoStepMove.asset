@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d7a232c47d485f88b8b85ac0ec2d16, type: 3}
   m_Name: TwoStepMove
   m_EditorClassIdentifier: 
-  type: 1
+  type: 0
   moveCost: 2
-  maxSteps: 2
+  maxSteps: 1

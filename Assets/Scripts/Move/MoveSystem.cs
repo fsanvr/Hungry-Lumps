@@ -7,10 +7,8 @@ public class MoveSystem : InitializableBehaviour
     [SerializeField] private SatietySystem satietySystem;
     [SerializeField] private GridSystem gridSystem;
     [SerializeField] private PlayerComponent playerComponent;
-
-    [SerializeField] private BuffableSystemsDictionary dictionary; //TODO: выделить в систему
-    
-    [SerializeField] public PathDrawer pathDrawer;
+    [SerializeField] private BuffSystem buffSystem;
+    [SerializeField] private PathDrawer pathDrawer;
 
     private MovePattern _movePattern;
 
@@ -69,7 +67,7 @@ public class MoveSystem : InitializableBehaviour
 
         if (cell.ContainsBonus())
         {
-            ProcessBuff(cell.GetBonus());
+            buffSystem.ProcessBuff(cell.GetBonus());
             cell.ClearBonus();
         }
         playerComponent.transform.position = cell.position;
@@ -78,14 +76,5 @@ public class MoveSystem : InitializableBehaviour
     private bool PlayerCanMove()
     {
         return satietySystem.CurrentSatiety >= _movePattern.MoveCost;
-    }
-
-    private void ProcessBuff(Buff buff)
-    {
-        var system = dictionary.GetValueOrDefault(buff.SystemName, null);
-        if (system)
-        {
-            ((Buffable)system).AddBuff(buff);
-        }
     }
 }
