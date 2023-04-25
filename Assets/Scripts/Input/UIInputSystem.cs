@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIInputSystem : BlockableBehaviour
 {
+    [SerializeField] private string clickAudioTag = "ButtonClick";
+    
     public readonly UIMouseClickEvent MouseClicked = new UIMouseClickEvent();
 
     private GraphicRaycaster _raycaster;
@@ -34,7 +36,7 @@ public class UIInputSystem : BlockableBehaviour
             if (results.Count != 0)
             {
                 var clicked = results[0].gameObject;
-                MouseClicked.Invoke(clicked);
+                Click(clicked);
             }
         }
     }
@@ -53,5 +55,16 @@ public class UIInputSystem : BlockableBehaviour
         var results = new List<RaycastResult>();
         _raycaster.Raycast(_eventData, results);
         return results;
+    }
+
+    private void Click(GameObject clickedObject)
+    {
+        var clickSound = GameObject.FindGameObjectsWithTag(clickAudioTag);
+        if (clickSound.Length == 1)
+        {
+            var clickSource = clickSound[0].GetComponent<AudioSource>();
+            clickSource.Play();
+        }
+        MouseClicked.Invoke(clickedObject);
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Cell
   - ShopItem
+  - MainTheme
+  - ButtonClick
   layers:
   - Default
   - TransparentFX
