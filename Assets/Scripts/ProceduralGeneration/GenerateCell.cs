@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public struct GenerateCell
 {
     public WallData? ObjectComponent;

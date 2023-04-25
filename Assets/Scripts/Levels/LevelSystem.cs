@@ -5,13 +5,14 @@ public class LevelSystem: MonoBehaviour
 {
     [SerializeField] private int menuSceneIndex = 0;
     [SerializeField] private int gameSceneIndex = 1;
-    [SerializeField] private LevelData data;
-    
+    [SerializeField] private LevelData levelData;
+    [SerializeField] private PlayerData playerData;
+
     private GridGenerator _generator;
 
     private void Awake()
     {
-        _generator = new GridGenerator(data);
+        _generator = new GridGenerator(levelData, playerData);
     }
 
     public void EnableMenu()
@@ -22,8 +23,13 @@ public class LevelSystem: MonoBehaviour
     public void EnableNewLevel()
     {
         var grid = _generator.Generate();
-        data.Grid = grid;
+        levelData.Grid = grid;
         
+        SceneManager.LoadScene(gameSceneIndex);
+    }
+
+    public void RestartLevel()
+    {
         SceneManager.LoadScene(gameSceneIndex);
     }
  }
