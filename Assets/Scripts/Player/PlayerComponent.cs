@@ -48,7 +48,7 @@ public class PlayerComponent : InitializableBehaviour
     protected override void MyInit(LevelData data)
     {
         _controller = GetComponent<AnimationController>();
-        _moveDuration = data.pet.moveComponent.moveData.moveDuration;
+        _moveDuration = data.pet.moveComponent.moveData.GetMoveDuration();
 
         var startPosition = data.Grid.StartPosition;
         var playerSpawnPoint = new Vector3(startPosition.x, startPosition.y, 0);

@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: TwoStepMove
   m_EditorClassIdentifier: 
   type: 1
-  moveCost: 2
-  moveDuration: 0.2
   maxSteps: 2
+  moveCostBase: 10
+  moveCostMin: 4
+  moveCostUpgradeSteps: 5
+  moveCostUpgradeStepCurrent: 5
+  moveDurationBase: 1.6
+  moveDurationMin: 0.9
+  moveDurationUpgradeSteps: 5
+  moveDurationUpgradeStepCurrent: 0

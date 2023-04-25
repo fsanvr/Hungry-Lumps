@@ -11,7 +11,7 @@ public class Cell : MonoBehaviour
 
     public bool ContainsFood()
     {
-        return _foodComponent is not null;
+        return _foodComponent is not null && !_foodComponent.Equals(null);
     }
     
     public void SetFood(FoodData food)
@@ -30,13 +30,18 @@ public class Cell : MonoBehaviour
 
     public void ClearFood()
     {
-        _foodComponent?.Destroy();
+        if (!ContainsFood())
+        {
+            return;
+        }
+        
+        _foodComponent.Destroy();
         _foodComponent = null;
     }
     
     public bool ContainsWall()
     {
-        return _wallComponent is not null;
+        return _wallComponent is not null && !_wallComponent.Equals(null);
     }
     
     public void SetWall(WallData obj)
@@ -50,13 +55,17 @@ public class Cell : MonoBehaviour
 
     public void ClearWall()
     {
-        _wallComponent?.Destroy();
+        if (!ContainsWall())
+        {
+            return;
+        }
+        _wallComponent.Destroy();
         _wallComponent = null;
     }
     
     public bool ContainsBonus()
     {
-        return _bonusComponent is not null;
+        return _bonusComponent is not null && !_bonusComponent.Equals(null);
     }
     
     public void SetBonus(BonusData bonus)
@@ -75,7 +84,11 @@ public class Cell : MonoBehaviour
 
     public void ClearBonus()
     {
-        _bonusComponent?.Destroy();
+        if (!ContainsBonus())
+        {
+            return;
+        }
+        _bonusComponent.Destroy();
         _bonusComponent = null;
     }
 

@@ -13,8 +13,8 @@ public class LineMovePattern : MovePattern
     public LineMovePattern(InputSystem inputSystem, GridSystem gridSystem, PlayerComponent playerComponent, MoveData data) 
         : base(inputSystem, gridSystem, playerComponent)
     {
-        _moveDelayInSeconds = data.moveDuration;
-        MoveCost = data.moveCost;
+        _moveDelayInSeconds = data.GetMoveDuration();
+        MoveCost = data.GetMoveCost();
         _maxSteps = data.maxSteps;
         if (Input)
         {
