@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d7a232c47d485f88b8b85ac0ec2d16, type: 3}
-  m_Name: TwoStepMove
+  m_Name: OneStepMove
   m_EditorClassIdentifier: 
   type: 1
   maxSteps: 2
   moveCostBase: 10
-  moveCostMin: 4
-  moveCostUpgradeSteps: 5
-  moveCostUpgradeStepCurrent: 5
+  moveCostMin: 6
+  moveCostUpgradeSteps: 4
+  moveCostUpgradeStepCurrent: 0
   moveDurationBase: 1.6
-  moveDurationMin: 0.9
+  moveDurationMin: 1.1
   moveDurationUpgradeSteps: 5
   moveDurationUpgradeStepCurrent: 0

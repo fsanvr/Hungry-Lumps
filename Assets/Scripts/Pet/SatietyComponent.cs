@@ -9,7 +9,7 @@ public class SatietyComponent
     public int upgradeSteps;
     public int upgradeStepCurrent = 0;
     private Func<int, int> SatietyUpgradeCost 
-        => step => (int)Math.Exp(Math.Pow(step, 0.6f));
+        => step => (int)Math.Exp(Math.Pow(step, 0.8f));
 
     public void Upgrade()
     {
