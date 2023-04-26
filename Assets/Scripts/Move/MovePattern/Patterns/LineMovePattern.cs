@@ -71,7 +71,7 @@ public class LineMovePattern : MovePattern
 
     private void OnMouseClicked(Collider2D clicked)
     {
-        if (!IsCell(clicked.gameObject))
+        if (!IsCell(clicked.gameObject) || _currentDelay > 0.0f)
         {
             return;
         }
