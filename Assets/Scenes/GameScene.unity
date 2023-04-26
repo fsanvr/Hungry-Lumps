@@ -1971,7 +1971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBlocked: 0
   grid: {fileID: 864228658}
-  timeToGenerate: 3
+  player: {fileID: 902048664}
+  timeToGenerate: 0.2
 --- !u!4 &1838473540
 Transform:
   m_ObjectHideFlags: 0

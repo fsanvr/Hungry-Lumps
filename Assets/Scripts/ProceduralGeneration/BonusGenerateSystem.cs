@@ -10,7 +10,7 @@ public class BonusGenerateSystem : InitializableBehaviour
     protected override void MyInit(LevelData data)
     {
         _generator = new BonusGenerator(data, grid);
-        StartCoroutine(Generate());
+        //StartCoroutine(Generate());
     }
 
     private IEnumerator Generate()

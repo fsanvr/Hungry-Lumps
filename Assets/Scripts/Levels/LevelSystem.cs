@@ -23,8 +23,10 @@ public class LevelSystem: MonoBehaviour
     public void EnableNewLevel()
     {
         var grid = _generator.Generate();
-        levelData.Grid = grid;
+        levelData.grid = grid.Item1;
+        levelData.graph = grid.Item2;
         
+
         SceneManager.LoadScene(gameSceneIndex);
     }
 

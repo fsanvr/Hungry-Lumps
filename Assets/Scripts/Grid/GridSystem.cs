@@ -69,7 +69,7 @@ public class GridSystem : InitializableBehaviour
 
     private void InitField(LevelData data)
     {
-        var grid = data.Grid;
+        var grid = data.grid;
         var cellPrefab = data.cellPrefab;
         var shape = new Vector2Int(grid.Cells.GetLength(0), grid.Cells.GetLength(1));
         Cells = new Cell[shape.x, shape.y];

@@ -20,24 +20,25 @@ public class GridGenerator
 
         _levelNumber = playerData.completedLevelsCount + 1;
     }
-    public GenerateGrid Generate()
+    public (GenerateGrid, AdjacencyGraph<int, Edge<int>>)  Generate()
     {
         var maxGenerationTry = 20;
         GenerateGrid grid = GenerateGrid();
+        var graph = CreateGraph(grid);
         
         while (maxGenerationTry-- > 0)
         {
-            var graph = CreateGraph(grid);
             var componentsCount = graph.StronglyConnectedComponents(out var components);
             if (componentsCount == 1)
             {
-                return grid;
+                return (grid, graph);
             }
 
             grid = GenerateGrid();
+            graph = CreateGraph(grid);
         }
 
-        return grid;
+        return (grid, graph);
     }
 
     private GenerateGrid GenerateGrid()
@@ -79,7 +80,7 @@ public class GridGenerator
     private Vector2Int GetRandomSquareShape()
     {
         var minShape = Random.Range(3, 5);
-        var levelShape = Random.Range(_levelNumber - 2, _levelNumber + 5);
+        var levelShape = Random.Range(_levelNumber / 5 - 2, _levelNumber / 5 + 5);
         var shape = Mathf.Max(minShape, levelShape);
         return new Vector2Int(shape, shape);
     }
