@@ -16,8 +16,8 @@ MonoBehaviour:
   sprite: {fileID: -2076074925, guid: c63ba3bbffe37d3499d66d1c9fb1229f, type: 3}
   animator: {fileID: 0}
   satietyComponent:
-    satietyBase: 40
-    satietyMax: 120
+    satietyBase: 60
+    satietyMax: 100
     upgradeSteps: 5
     upgradeStepCurrent: 0
   moveComponent:

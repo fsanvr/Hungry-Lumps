@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OneStepMove
   m_EditorClassIdentifier: 
   type: 1
-  maxSteps: 2
+  maxSteps: 1
   moveCostBase: 10
   moveCostMin: 6
   moveCostUpgradeSteps: 4
