@@ -1430,15 +1430,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7350797363803007916, guid: 0130b7fe3b0af6244964966430eec92f, type: 3}
       propertyPath: m_Color.b
-      value: 0.88474905
+      value: 0.83921576
       objectReference: {fileID: 0}
     - target: {fileID: 7350797363803007916, guid: 0130b7fe3b0af6244964966430eec92f, type: 3}
       propertyPath: m_Color.g
-      value: 0.9150943
+      value: 0.68235296
       objectReference: {fileID: 0}
     - target: {fileID: 7350797363803007916, guid: 0130b7fe3b0af6244964966430eec92f, type: 3}
       propertyPath: m_Color.r
-      value: 0.13294764
+      value: 0.45098042
       objectReference: {fileID: 0}
     - target: {fileID: 7350797363803007916, guid: 0130b7fe3b0af6244964966430eec92f, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1592,6 +1592,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8392850546318094097, guid: 0130b7fe3b0af6244964966430eec92f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b82abfb11ef17c42855e028b249a6af, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0130b7fe3b0af6244964966430eec92f, type: 3}
 --- !u!224 &803675442 stripped
@@ -2851,10 +2855,10 @@ RectTransform:
   m_Father: {fileID: 1070841160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717070754
 MonoBehaviour:
@@ -3690,6 +3694,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2041753596}
     m_Modifications:
+    - target: {fileID: 1331224508690203990, guid: 52a1c478bdf58914b9334e68d637277b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b82abfb11ef17c42855e028b249a6af, type: 3}
     - target: {fileID: 4008803639039397894, guid: 52a1c478bdf58914b9334e68d637277b, type: 3}
       propertyPath: m_Name
       value: SettingsScreen
@@ -3863,6 +3871,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -58632837, guid: d98a483ccadab3b49bb1e2f72894cae3, type: 3}
+    - target: {fileID: 6344547059933973221, guid: 1bcd0d98e5d7bda4c8c8d2ee6da7b53a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b82abfb11ef17c42855e028b249a6af, type: 3}
     - target: {fileID: 6643936924561856606, guid: 1bcd0d98e5d7bda4c8c8d2ee6da7b53a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4232,6 +4244,10 @@ PrefabInstance:
       propertyPath: isBase
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8147122583661778719, guid: 0b97db351dba71141ac13d238e3a03fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b82abfb11ef17c42855e028b249a6af, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b97db351dba71141ac13d238e3a03fe, type: 3}
 --- !u!224 &6747730904006010053 stripped
