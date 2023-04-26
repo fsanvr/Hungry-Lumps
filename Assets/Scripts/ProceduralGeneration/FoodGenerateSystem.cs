@@ -11,13 +11,12 @@ public class FoodGenerateSystem : InitializableBehaviour
     protected override void MyInit(LevelData data)
     {
         _generator = new FoodGenerator(data, grid, player);
-        StartCoroutine(Generate());
+        _generator.GenerateFood();
     }
 
     private IEnumerator Generate()
     {
         yield return new WaitForSeconds(timeToGenerate);
         _generator.GenerateFood();
-        
     }
 }

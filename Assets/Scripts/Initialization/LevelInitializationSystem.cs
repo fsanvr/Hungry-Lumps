@@ -5,7 +5,7 @@ public class LevelInitializationSystem : MonoBehaviour
 {
     [SerializeField] private List<InitializableBehaviour> systemsToInit = new List<InitializableBehaviour>();
     [SerializeField] private LevelData levelData;
-    private void Awake()
+    private void Start()
     {
         InitSystems();
     }

@@ -38,29 +38,13 @@ public class FoodGenerator
         }
     }
 
-    private FoodData GenerateFoodData()
-    {
-        var sprite = _food[Random.Range(0, _food.GetLength(0))];
-        var prize = 1.0f;
-        var timeToDestroy = Random.Range(9.0f, 12.0f);
-        var foodData = new FoodData
-        {
-            Prefab = _foodPrefab,
-            Sprite = sprite, 
-            Prize = prize, 
-            TimeToDestroy = timeToDestroy
-        };
-
-        return foodData;
-    }
-
     private IEnumerable<Vector2Int> FindPositionToFood(Vector3 startPosition)
     {
         var shape = new Vector2Int(_grid.Cells.GetLength(0), _grid.Cells.GetLength(1));
         var rootCell = PosToIndex(shape, (int)startPosition.x, (int)startPosition.y);
         var lengths = GetPathLengthToCells(rootCell);
 
-        var samplingInterval = shape.x <= 3 ? 3 : shape.x;
+        var samplingInterval = shape.x <= 3 ? 3 : shape.x + 1;
         var positions = new List<Vector2Int>();
 
         var count = -2;
@@ -110,5 +94,21 @@ public class FoodGenerator
     private Vector2Int IndexToPos(Vector2Int shape, int index)
     {
         return new Vector2Int(index % shape.y, index / shape.y);
+    }
+    
+    private FoodData GenerateFoodData()
+    {
+        var sprite = _food[Random.Range(0, _food.GetLength(0))];
+        var prize = 1.0f;
+        var timeToDestroy = Random.Range(25.0f, 45.0f);
+        var foodData = new FoodData
+        {
+            Prefab = _foodPrefab,
+            Sprite = sprite, 
+            Prize = prize, 
+            TimeToDestroy = timeToDestroy
+        };
+
+        return foodData;
     }
 }
