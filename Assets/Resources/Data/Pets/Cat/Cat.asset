@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4a6e0999e14a4f8333ba4a85aa00bd, type: 3}
   m_Name: Cat
   m_EditorClassIdentifier: 
+  petName: Kitty
   sprite: {fileID: -2076074925, guid: c63ba3bbffe37d3499d66d1c9fb1229f, type: 3}
   animator: {fileID: 0}
   satietyComponent:
-    satietyBase: 40
-    satietyMaxAdditional: 60
-    satietyUpgradeCost: 0
+    satietyBase: 60
+    satietyMax: 100
+    upgradeSteps: 5
+    upgradeStepCurrent: 0
   moveComponent:
     moveData: {fileID: 11400000, guid: 3bbbfc93a629432449dbd50aeec6cda0, type: 2}

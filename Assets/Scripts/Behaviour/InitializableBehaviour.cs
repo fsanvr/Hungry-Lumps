@@ -1,4 +1,6 @@
-﻿public abstract class InitializableBehaviour : BlockableBehaviour
+﻿using UnityEngine;
+
+public abstract class InitializableBehaviour : BlockableBehaviour
 {
     public void Init(LevelData data)
     {

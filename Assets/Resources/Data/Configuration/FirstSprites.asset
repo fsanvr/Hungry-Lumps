@@ -12,7 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35aff3de0c024e7a96b7f4e5cf47d8ce, type: 3}
   m_Name: FirstSprites
   m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  cells: []
-  walls: []
-  food: []
+  background: {fileID: 21300000, guid: 83129def447f22c4f91645472c99304d, type: 3}
+  bonuses:
+  - {fileID: 21300000, guid: d139b48a372802a42b221ad4a1f80911, type: 3}
+  cells:
+  - {fileID: -10054362, guid: 4ecbaddbbb6be84448c038fed3dfcc2f, type: 3}
+  - {fileID: -1516304180, guid: 4ecbaddbbb6be84448c038fed3dfcc2f, type: 3}
+  - {fileID: -882724699, guid: 4ecbaddbbb6be84448c038fed3dfcc2f, type: 3}
+  - {fileID: -387925908, guid: 4ecbaddbbb6be84448c038fed3dfcc2f, type: 3}
+  - {fileID: -2125280316, guid: 4ecbaddbbb6be84448c038fed3dfcc2f, type: 3}
+  - {fileID: 1214307594, guid: 4ecbaddbbb6be84448c038fed3dfcc2f, type: 3}
+  - {fileID: -1540971188, guid: e04217c03710dbb4dbd9238fa79d9a80, type: 3}
+  - {fileID: -108462608, guid: e04217c03710dbb4dbd9238fa79d9a80, type: 3}
+  - {fileID: 1107133423, guid: e04217c03710dbb4dbd9238fa79d9a80, type: 3}
+  - {fileID: 1628672571, guid: e04217c03710dbb4dbd9238fa79d9a80, type: 3}
+  - {fileID: 1268717678, guid: e04217c03710dbb4dbd9238fa79d9a80, type: 3}
+  walls:
+  - {fileID: 21300000, guid: 71ebe9fc7ecb3694dbc992bc5fe07164, type: 3}
+  food:
+  - {fileID: 21300000, guid: 0b9e159b363a1ff4f8982693963e393d, type: 3}
+  - {fileID: 21300000, guid: ecfc905a2597f014695bcc25207a2010, type: 3}
+  - {fileID: 21300000, guid: 489912c6941fa9b48bf20fb07eb6d7a5, type: 3}
+  - {fileID: 21300000, guid: 7dd21f826a119274bb085376073e5cbd, type: 3}
+  - {fileID: 21300000, guid: e0a7fb47c7111464f866363e7a3f47da, type: 3}

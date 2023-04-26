@@ -41,16 +41,16 @@ public class PlayerComponent : InitializableBehaviour
                 .DOMove(position, duration)
                 .SetEase(Ease.InOutQuad)
                 .SetLink(this.gameObject)
-                .OnComplete(_controller.EndMoveAnimation)
+                .OnKill(_controller.EndMoveAnimation)
         );
     }
 
     protected override void MyInit(LevelData data)
     {
         _controller = GetComponent<AnimationController>();
-        _moveDuration = data.pet.moveComponent.moveData.moveDuration;
+        _moveDuration = data.pet.moveComponent.moveData.GetMoveDuration();
 
-        var startPosition = data.Grid.StartPosition;
+        var startPosition = data.grid.StartPosition;
         var playerSpawnPoint = new Vector3(startPosition.x, startPosition.y, 0);
         SetPosition(playerSpawnPoint);
     }

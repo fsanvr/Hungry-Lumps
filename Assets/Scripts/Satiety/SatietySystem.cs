@@ -81,6 +81,11 @@ public class SatietySystem : InitializableBehaviour, Buffable
 
     private void LevelLose()
     {
+        if (levelEndSystem.IsLevelEnded())
+        {
+            return;
+        }
+        
         levelEndSystem.LevelLose();
     }
     

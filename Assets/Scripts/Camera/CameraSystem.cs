@@ -10,7 +10,7 @@ public class CameraSystem : InitializableBehaviour
 
     private static void CenterCamera(LevelData data)
     {
-        var grid = data.Grid.Cells;
+        var grid = data.grid.Cells;
         var gridShape = new Vector2Int(grid.GetLength(0) - 1, grid.GetLength(1) - 1);
         var center = new Vector3(gridShape.x / 2.0f, gridShape.y / 2.0f);
         var avgShape = (gridShape.x + gridShape.y) / 2.0f;

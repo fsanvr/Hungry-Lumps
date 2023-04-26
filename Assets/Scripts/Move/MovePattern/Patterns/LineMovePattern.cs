@@ -13,8 +13,8 @@ public class LineMovePattern : MovePattern
     public LineMovePattern(InputSystem inputSystem, GridSystem gridSystem, PlayerComponent playerComponent, MoveData data) 
         : base(inputSystem, gridSystem, playerComponent)
     {
-        _moveDelayInSeconds = data.moveDuration;
-        MoveCost = data.moveCost;
+        _moveDelayInSeconds = data.GetMoveDuration();
+        MoveCost = data.GetMoveCost();
         _maxSteps = data.maxSteps;
         if (Input)
         {
@@ -71,7 +71,7 @@ public class LineMovePattern : MovePattern
 
     private void OnMouseClicked(Collider2D clicked)
     {
-        if (!IsCell(clicked.gameObject))
+        if (!IsCell(clicked.gameObject) || _currentDelay > 0.0f)
         {
             return;
         }
