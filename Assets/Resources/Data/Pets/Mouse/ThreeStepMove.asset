@@ -17,8 +17,8 @@ MonoBehaviour:
   moveCostBase: 6
   moveCostMin: 4
   moveCostUpgradeSteps: 2
-  moveCostUpgradeStepCurrent: 2
+  moveCostUpgradeStepCurrent: 0
   moveDurationBase: 0.8
   moveDurationMin: 0.5
   moveDurationUpgradeSteps: 3
-  moveDurationUpgradeStepCurrent: 3
+  moveDurationUpgradeStepCurrent: 0
