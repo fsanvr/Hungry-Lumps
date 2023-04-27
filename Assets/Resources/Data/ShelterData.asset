@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allPets:
   - {fileID: 11400000, guid: bcab42131579fe64ea2624b7cbd2313f, type: 2}
-  levelsForPets: 00000000
+  - {fileID: 11400000, guid: e1efa55d2a63f2a469fa8e13fb95fc35, type: 2}
+  - {fileID: 11400000, guid: 7882dbb0d5710464d834d15cb8706bee, type: 2}
+  levelsForPets: 000000000000000000000000
   activePets:
   - {fileID: 11400000, guid: bcab42131579fe64ea2624b7cbd2313f, type: 2}
+  - {fileID: 11400000, guid: e1efa55d2a63f2a469fa8e13fb95fc35, type: 2}
+  - {fileID: 11400000, guid: 7882dbb0d5710464d834d15cb8706bee, type: 2}
   maxShelterLevel: 10
   currentShelterLevel: 0
   currentPrestigeLevel: 0

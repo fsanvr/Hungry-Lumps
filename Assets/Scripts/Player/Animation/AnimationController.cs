@@ -2,6 +2,7 @@
 
 public class AnimationController : MonoBehaviour
 {
+    [SerializeField] private LevelData data;
     private static readonly int IsRun = Animator.StringToHash("isRun");
     private Animator _animator;
     
@@ -18,5 +19,6 @@ public class AnimationController : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _animator.runtimeAnimatorController = data.pet.animatorController;
     }
 }

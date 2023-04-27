@@ -69,9 +69,15 @@ MonoBehaviour:
   shelterSystem: {fileID: 0}
   contentView: {fileID: 7350797364842988814}
   petScreen: {fileID: 0}
-  shelterLevelView: {fileID: 7350797363803007916}
+  satietyView: {fileID: 0}
   prefabActive: {fileID: 3162404523123999522, guid: b09befdf4935f864eb348d19559cdb50, type: 3}
   prefabNotActive: {fileID: 3162404523123999522, guid: b22bac742340d624c9126bedb1a7a5c9, type: 3}
+  moveSpeedProgress: {fileID: 0}
+  moveSpeedUpgradeButton: {fileID: 0}
+  moveCostProgress: {fileID: 0}
+  moveCostUpgradeButton: {fileID: 0}
+  satietyProgress: {fileID: 0}
+  satietyUpgradeButton: {fileID: 0}
 --- !u!1 &4464056248061400752
 GameObject:
   m_ObjectHideFlags: 0

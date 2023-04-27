@@ -10,6 +10,7 @@ public class ShelterSystem : MonoBehaviour
     
     [SerializeField] private ShelterData shelterData;
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private LevelData levelData;
 
     private void Awake()
     {
@@ -145,6 +146,7 @@ public class ShelterSystem : MonoBehaviour
     private void SetActive(Pet pet)
     {
         playerData.activePet = pet;
+        levelData.pet = pet;
         Updated();
     }
 
