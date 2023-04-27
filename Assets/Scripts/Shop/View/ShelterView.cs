@@ -105,6 +105,9 @@ public class ShelterView : MonoBehaviour
 
     private void ConfigureSatiety(PlayerData playerData)
     {
+        satietyUpgradeButton.gameObject.SetActive(true);
+        satietyUpgradeButton.interactable = true;
+        
         var activePet = playerData.activePet;
         
         var scale = satietyProgress.transform.localScale;
@@ -128,6 +131,9 @@ public class ShelterView : MonoBehaviour
     
     private void ConfigureMoveSpeed(PlayerData playerData)
     {
+        moveSpeedUpgradeButton.gameObject.SetActive(true);
+        moveSpeedUpgradeButton.interactable = true;
+        
         var activePet = playerData.activePet;
         
         var scale = moveSpeedProgress.transform.localScale;
@@ -151,6 +157,9 @@ public class ShelterView : MonoBehaviour
     
     private void ConfigureMoveCost(PlayerData playerData)
     {
+        moveCostUpgradeButton.gameObject.SetActive(true);
+        moveCostUpgradeButton.interactable = true;
+        
         var activePet = playerData.activePet;
         
         var scale = moveCostProgress.transform.localScale;

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca9a1f659fd106d4489deb754ec89573, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  activePet: {fileID: 11400000, guid: 7882dbb0d5710464d834d15cb8706bee, type: 2}
+  activePet: {fileID: 11400000, guid: bcab42131579fe64ea2624b7cbd2313f, type: 2}
   satiety: 0
   completedLevelsCount: 0
